@@ -31,6 +31,7 @@ class ThemeInjector
 
         $jigsaw->setConfig('prism_theme_vars', $cssVariables);
         $jigsaw->setConfig('prism_theme_preset', $configData->theme_preset);
+        $jigsaw->setConfig('prism_project_name', $configData->project_name);
     }
 }
 
