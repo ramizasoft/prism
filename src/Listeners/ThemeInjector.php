@@ -22,12 +22,15 @@ class ThemeInjector
 
         $brandColors = $configData->brand_colors;
 
+        $normalize = fn (string $color) => str_starts_with($color, '#') ? $color : "#{$color}";
+
         $cssVariables = [
-            '--prism-color-primary' => $brandColors->primary,
-            '--prism-color-secondary' => $brandColors->secondary,
+            '--prism-color-primary' => $normalize($brandColors->primary),
+            '--prism-color-secondary' => $normalize($brandColors->secondary),
         ];
 
         $jigsaw->setConfig('prism_theme_vars', $cssVariables);
+        $jigsaw->setConfig('prism_theme_preset', $configData->theme_preset);
     }
 }
 

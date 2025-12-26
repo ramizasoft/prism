@@ -24,8 +24,8 @@ BLADE);
         'theme_preset' => 'clinical',
         'compliance_mode' => 'none',
         'brand_colors' => [
-            'primary' => '#ff0000',
-            'secondary' => '#00ff00',
+            'primary' => 'ff0000',
+            'secondary' => '00ff00',
         ],
     ]);
 
