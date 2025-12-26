@@ -1,6 +1,6 @@
 # Story 2.1: Define Base PrismConfig DTO
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -88,3 +88,4 @@ gpt-5.1-codex-max (OpenAI)
 ### Change Log
 
 - 2025-12-25: Added ConfigData/BrandColorsData DTOs with validation and tests; added validator compatibility shim for Laravel Zero tests.
+- 2025-12-26: Refactored ConfigData to use `spatie/laravel-data` attributes correctly, removed manual validator slop, fixed test infrastructure to support data validation, and verified polymorphic niche handling. (Adversarial Review)

@@ -42,12 +42,12 @@ story_location: _bmad-output/implementation-artifacts
 development_status:
   epic-1: in-progress
   1-1-initialize-laravel-zero-core-engine: done
-  1-2-integrate-jigsaw-ssg-into-engine: review
-  1-3-custom-template-loader-the-thin-client-pattern: review
+  1-2-integrate-jigsaw-ssg-into-engine: done
+  1-3-custom-template-loader-the-thin-client-pattern: done
   epic-1-retrospective: optional
 
   epic-2: in-progress
-  2-1-define-base-prismconfig-dto: review
+  2-1-define-base-prismconfig-dto: done
   2-2-implement-build-time-config-validator: review
   2-3-polymorphic-niche-configuration: done
   epic-2-retrospective: optional
@@ -65,8 +65,8 @@ development_status:
   epic-4-retrospective: optional
 
   epic-5: in-progress
-  5-1-prism-update-all-command: ready-for-dev
-  5-2-prism-build-all-command: ready-for-dev
+  5-1-prism-update-all-command: review
+  5-2-prism-build-all-command: review
   5-3-prism-create-client-wizard: ready-for-dev
   epic-5-retrospective: optional
 
