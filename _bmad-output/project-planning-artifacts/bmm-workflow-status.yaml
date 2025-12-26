@@ -1,0 +1,14 @@
+---
+project_name: 'prism'
+workflows:
+  product-brief:
+    status: 'completed'
+    output_file: '_bmad-output/project-planning-artifacts/product-brief-prism-2025-12-25.md'
+    completion_date: '2025-12-25T08:15:00.000Z'
+    steps_completed: [1, 2, 3, 4, 5, 6]
+  prd:
+    status: 'completed'
+    output_file: '_bmad-output/prd.md'
+    completion_date: '2025-12-25T08:35:00.000Z'
+    steps_completed: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+---

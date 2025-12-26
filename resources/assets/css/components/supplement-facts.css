@@ -1,0 +1,146 @@
+.prism-supplement-facts {
+    border: 2px solid #0f172a;
+    padding: 16px;
+    max-width: 640px;
+    background: #ffffff;
+    font-family: 'Inter', 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.prism-supplement-facts__header {
+    border-bottom: 4px solid #0f172a;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+}
+
+.prism-supplement-facts__header h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.prism-supplement-facts__serving {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 6px;
+    column-gap: 8px;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.prism-supplement-facts__label {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.prism-supplement-facts__value {
+    text-align: right;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.prism-supplement-facts__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.prism-supplement-facts__table th,
+.prism-supplement-facts__table td {
+    padding: 6px 0;
+    vertical-align: top;
+}
+
+.prism-supplement-facts__col-label {
+    font-weight: 700;
+    border-bottom: 2px solid #0f172a;
+    text-align: right;
+}
+
+.prism-supplement-facts__col-label:first-child {
+    text-align: left;
+}
+
+.prism-supplement-facts__row {
+    border-bottom: 1px solid #d1d5db;
+}
+
+.prism-supplement-facts__row:last-child {
+    border-bottom: none;
+}
+
+.prism-supplement-facts__row--blend {
+    border-top: 2px solid #0f172a;
+}
+
+.prism-supplement-facts__row--subtle td {
+    border-bottom: none;
+}
+
+.prism-supplement-facts__nutrient {
+    width: 55%;
+    font-weight: 700;
+    text-align: left;
+}
+
+.prism-supplement-facts__name {
+    display: inline-block;
+}
+
+.prism-supplement-facts__source {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-left: 4px;
+}
+
+.prism-supplement-facts__amount {
+    width: 25%;
+    text-align: right;
+    font-weight: 600;
+}
+
+.prism-supplement-facts__amount--blend {
+    text-align: left;
+    padding-left: 8px;
+    color: #111827;
+}
+
+.prism-supplement-facts__dv {
+    width: 20%;
+    text-align: right;
+    font-weight: 700;
+}
+
+.prism-supplement-facts__dv--placeholder {
+    font-style: italic;
+}
+
+.prism-supplement-facts__blend-name {
+    font-weight: 800;
+}
+
+.prism-supplement-facts__ingredients {
+    margin-top: 4px;
+    padding-left: 12px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #1f2937;
+}
+
+.prism-supplement-facts__ingredient {
+    display: inline-block;
+}
+
+.prism-supplement-facts__footnote {
+    border-top: 1px solid #d1d5db;
+    margin-top: 10px;
+    padding-top: 8px;
+    font-size: 0.9rem;
+    color: #111827;
+}
+
+.prism-supplement-facts__footnote p {
+    margin: 0;
+}
+
