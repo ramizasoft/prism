@@ -48,7 +48,7 @@ development_status:
 
   epic-2: in-progress
   2-1-define-base-prismconfig-dto: done
-  2-2-implement-build-time-config-validator: review
+  2-2-implement-build-time-config-validator: done
   2-3-polymorphic-niche-configuration: done
   epic-2-retrospective: optional
 

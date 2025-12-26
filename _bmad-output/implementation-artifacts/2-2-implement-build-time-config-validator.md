@@ -1,6 +1,6 @@
 # Story 2.2: Implement Build-Time Config Validator
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -78,3 +78,4 @@ gpt-5.1-codex-max
 ### Change Log
 
 - 2025-12-26: Added build-time config validation listener with tests and README guidance; updated sprint status to review.
+- 2025-12-26: Refactored BuildValidator to enable strict validation (ValidationStrategy::Always), removed redundant normalization, and ensured robust exit(1) on failure. (Adversarial Review)

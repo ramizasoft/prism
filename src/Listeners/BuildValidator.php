@@ -46,21 +46,14 @@ class BuildValidator
 
         if (! is_file($configPath)) {
             $this->renderError($jigsaw, "Config Error: config.php not found at {$configPath}");
-
-            throw new RuntimeException('Config validation failed: missing config.php');
+            exit(1);
         }
 
         $config = include $configPath;
 
         if (! is_array($config)) {
             $this->renderError($jigsaw, "Config Error: config.php must return an array at {$configPath}");
-
-            throw new RuntimeException('Config validation failed: config.php did not return an array');
-        }
-
-        if (! array_key_exists('niche', $config) || ! is_array($config['niche'])) {
-            // Normalize niche for validation; optional unless a compliance niche is required
-            $config['niche'] = [];
+            exit(1);
         }
 
         try {
@@ -71,12 +64,10 @@ class BuildValidator
                 ->implode(PHP_EOL . ' - ');
 
             $this->renderError($jigsaw, "Config Error:\n - {$messages}");
-
-            throw new RuntimeException('Config validation failed', 0, $exception);
+            exit(1);
         } catch (\Throwable $throwable) {
             $this->renderError($jigsaw, 'Config Error: ' . $throwable->getMessage());
-
-            throw $throwable;
+            exit(1);
         }
 
         $jigsaw->app->instance(ConfigData::class, $configData);
@@ -135,7 +126,7 @@ class BuildValidator
                         'root_namespace' => null,
                     ],
                 ],
-                'validation_strategy' => ValidationStrategy::Disabled->value,
+                'validation_strategy' => ValidationStrategy::Always->value,
                 'name_mapping_strategy' => [
                     'input' => null,
                     'output' => null,
