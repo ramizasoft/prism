@@ -54,7 +54,7 @@ development_status:
 
   epic-3: in-progress
   3-1-css-variable-injection-engine: done
-  3-2-base-layout-ui-components: review
+  3-2-base-layout-ui-components: done
   3-3-clinical-preset-styles: review
   epic-3-retrospective: optional
 

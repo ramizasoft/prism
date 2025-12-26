@@ -1,6 +1,6 @@
 # Story 3.2: Base Layout & UI Components
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -84,3 +84,8 @@ gpt-5.1-codex-max
 - source/ui-demo.blade.php
 - tests/Feature/UIComponentsTest.php
 - _bmad-output/implementation-artifacts/sprint-status.yaml
+
+### Change Log
+
+- 2025-12-26: Created base layout and UI components (header, footer, hero, product-card) with Tailwind theming and sample page.
+- 2025-12-26: Refactored app layout to use `x-prism::layout.base` (DRY), fixed component color usage (border opacity issue), improved footer branding, and fixed Jigsaw data passing to components. (Adversarial Review)

@@ -6,7 +6,7 @@
     'ctaHref' => '#',
 ])
 
-<article class="flex flex-col overflow-hidden rounded-lg border border-secondary/40 bg-white shadow-sm">
+<article class="flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
     <img class="h-48 w-full object-cover" src="{{ $image }}" alt="{{ $title }}">
     <div class="flex flex-1 flex-col gap-3 p-4">
         <div>

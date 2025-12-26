@@ -1,6 +1,6 @@
 <div class="bg-secondary text-primary">
     <div class="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
-        <div>&copy; {{ date('Y') }} Prism. All rights reserved.</div>
+        <div>&copy; {{ date('Y') }} {{ $page->prism_project_name ?? 'Prism' }}. All rights reserved.</div>
         <div class="flex gap-4">
             <a class="hover:underline" href="#hero">Hero</a>
             <a class="hover:underline" href="#products">Products</a>
