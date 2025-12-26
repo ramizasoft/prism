@@ -8,30 +8,25 @@ use Prism\Core\Data\ConfigData;
 use Prism\Core\Data\Niche\PetFoodConfig;
 use Prism\Core\Data\Niche\SupplementsConfig;
 
-beforeEach(function (): void {
-    $app = require __DIR__ . '/../../bootstrap/app.php';
-    Illuminate\Container\Container::setInstance($app);
-    $app->instance('config', new \Illuminate\Config\Repository());
-
-    $dataConfig = require __DIR__ . '/../../vendor/spatie/laravel-data/config/data.php';
-    $dataConfig['validation_strategy'] = \Spatie\LaravelData\Support\Creation\ValidationStrategy::Disabled->value;
-    $app['config']->set('data', $dataConfig);
-});
-
 it('creates config data from valid array', function (): void {
-    $data = ConfigData::from([
-        'project_name' => 'Prism',
-        'theme_preset' => 'clinical',
-        'compliance_mode' => 'supplements',
-        'brand_colors' => [
-            'primary' => '#111111',
-            'secondary' => '#eeeeee',
-        ],
-        'niche' => [
-            'fda_disclaimer' => 'These statements...',
-            'supplement_facts_format' => 'standard',
-        ],
-    ]);
+    try {
+        $data = ConfigData::from([
+            'project_name' => 'Prism',
+            'theme_preset' => 'clinical',
+            'compliance_mode' => 'supplements',
+            'brand_colors' => [
+                'primary' => '#111111',
+                'secondary' => '#eeeeee',
+            ],
+            'niche' => [
+                'fda_disclaimer' => 'These statements...',
+                'supplement_facts_format' => 'standard',
+            ],
+        ]);
+    } catch (ValidationException $e) {
+        var_dump($e->errors());
+        throw $e;
+    }
 
     expect($data)->toBeInstanceOf(ConfigData::class)
         ->and($data->brand_colors)->toBeInstanceOf(BrandColorsData::class)
