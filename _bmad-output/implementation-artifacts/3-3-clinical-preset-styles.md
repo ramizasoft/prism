@@ -1,6 +1,6 @@
 # Story 3.3: "Clinical" Preset Styles
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -76,3 +76,8 @@ gpt-5.1-codex-max
 - resources/views/layouts/app.blade.php
 - tests/Feature/UIComponentsTest.php
 - _bmad-output/implementation-artifacts/sprint-status.yaml
+
+### Change Log
+
+- 2025-12-26: Created clinical preset CSS and updated Vite config/layout for dynamic theme loading.
+- 2025-12-26: Refactored clinical.css to remove hardcoded variable overrides (fixing the theming breakage), added all theme presets to Vite config, and included Google Font loading for professional typography. (Adversarial Review)
