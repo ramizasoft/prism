@@ -1,6 +1,6 @@
 # Story 3.1: CSS Variable Injection Engine
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -73,7 +73,10 @@ gpt-5.1-codex-max
 - Tailwind config maps primary/secondary colors to `var(--prism-color-*)` and extends sans font stack.
 - Feature test ensures config color changes appear in built HTML output.
 
-### File List
+### Change Log
+
+- 2025-12-26: Added ThemeInjector listener and base layout for CSS variable injection.
+- 2025-12-26: Refactored base.blade.php to remove fragile `app()` calls and heavy logic; added color normalization in ThemeInjector; verified robust variable injection. (Adversarial Review)
 
 - tailwind.config.js
 - resources/views/components/layout/base.blade.php
