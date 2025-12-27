@@ -85,11 +85,38 @@ trait InteractsWithTemporaryClient
 
     protected function assertBuildFileExists(string $path): void
     {
-        expect(is_file($this->buildDir . '/' . ltrim($path, '/')))->toBeTrue();
+        $resolved = $this->resolveBuildPath($path);
+        expect(is_file($resolved))->toBeTrue();
     }
 
     protected function getBuildFileContent(string $path): string
     {
-        return file_get_contents($this->buildDir . '/' . ltrim($path, '/'));
+        $resolved = $this->resolveBuildPath($path);
+
+        return file_get_contents($resolved);
+    }
+
+    protected function assertBuildFileContains(string $path, string $needle): void
+    {
+        $content = $this->getBuildFileContent($path);
+        expect($content)->toContain($needle);
+    }
+
+    private function resolveBuildPath(string $path): string
+    {
+        $primary = $this->buildDir . '/' . ltrim($path, '/');
+
+        if (is_file($primary)) {
+            return $primary;
+        }
+
+        if (str_ends_with($path, '.html')) {
+            $fallback = $this->buildDir . '/' . ltrim(str_replace('.html', '/index.html', $path), '/');
+            if (is_file($fallback)) {
+                return $fallback;
+            }
+        }
+
+        return $primary;
     }
 }

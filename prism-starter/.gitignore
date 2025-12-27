@@ -1,0 +1,5 @@
+/vendor
+/node_modules
+/build_*
+.DS_Store
+.env

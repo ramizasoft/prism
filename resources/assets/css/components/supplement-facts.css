@@ -1,13 +1,14 @@
 .prism-supplement-facts {
-    border: 2px solid #0f172a;
+    border: 2px solid var(--prism-color-primary, #0f172a);
     padding: 16px;
     max-width: 640px;
-    background: #ffffff;
+    background: var(--prism-bg-color, #ffffff);
     font-family: 'Inter', 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--prism-color-primary, #0f172a);
 }
 
 .prism-supplement-facts__header {
-    border-bottom: 4px solid #0f172a;
+    border-bottom: 4px solid var(--prism-color-primary, #0f172a);
     margin-bottom: 12px;
     padding-bottom: 8px;
 }
@@ -16,6 +17,7 @@
     font-size: 1.4rem;
     font-weight: 800;
     margin: 0;
+    color: var(--prism-color-primary, #0f172a);
 }
 
 .prism-supplement-facts__serving {
@@ -23,20 +25,18 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 6px;
     column-gap: 8px;
-    border-bottom: 2px solid #0f172a;
+    border-bottom: 2px solid var(--prism-color-primary, #0f172a);
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
 .prism-supplement-facts__label {
     font-weight: 600;
-    color: #0f172a;
 }
 
 .prism-supplement-facts__value {
     text-align: right;
     font-weight: 600;
-    color: #0f172a;
 }
 
 .prism-supplement-facts__table {
@@ -53,7 +53,7 @@
 
 .prism-supplement-facts__col-label {
     font-weight: 700;
-    border-bottom: 2px solid #0f172a;
+    border-bottom: 2px solid var(--prism-color-primary, #0f172a);
     text-align: right;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .prism-supplement-facts__row {
-    border-bottom: 1px solid #d1d5db;
+    border-bottom: 1px solid var(--prism-border-color, #d1d5db);
 }
 
 .prism-supplement-facts__row:last-child {
@@ -70,15 +70,11 @@
 }
 
 .prism-supplement-facts__row--blend {
-    border-top: 2px solid #0f172a;
-}
-
-.prism-supplement-facts__row--subtle td {
-    border-bottom: none;
+    border-top: 2px solid var(--prism-color-primary, #0f172a);
 }
 
 .prism-supplement-facts__nutrient {
-    width: 55%;
+    width: 65%; /* Adjusted for merged blend/amount */
     font-weight: 700;
     text-align: left;
 }
@@ -90,20 +86,14 @@
 .prism-supplement-facts__source {
     font-weight: 500;
     font-size: 0.9rem;
-    color: #4b5563;
+    color: var(--prism-text-muted, #4b5563);
     margin-left: 4px;
 }
 
 .prism-supplement-facts__amount {
-    width: 25%;
+    width: 15%;
     text-align: right;
     font-weight: 600;
-}
-
-.prism-supplement-facts__amount--blend {
-    text-align: left;
-    padding-left: 8px;
-    color: #111827;
 }
 
 .prism-supplement-facts__dv {
@@ -120,12 +110,17 @@
     font-weight: 800;
 }
 
+.prism-supplement-facts__blend-amount {
+    font-weight: 600;
+    margin-left: 8px;
+}
+
 .prism-supplement-facts__ingredients {
     margin-top: 4px;
     padding-left: 12px;
     font-weight: 500;
     font-size: 0.9rem;
-    color: #1f2937;
+    color: var(--prism-text-secondary, #1f2937);
 }
 
 .prism-supplement-facts__ingredient {
@@ -133,14 +128,13 @@
 }
 
 .prism-supplement-facts__footnote {
-    border-top: 1px solid #d1d5db;
+    border-top: 1px solid var(--prism-border-color, #d1d5db);
     margin-top: 10px;
     padding-top: 8px;
-    font-size: 0.9rem;
-    color: #111827;
+    font-size: 0.8rem;
+    color: var(--prism-text-secondary, #111827);
 }
 
 .prism-supplement-facts__footnote p {
     margin: 0;
 }
-

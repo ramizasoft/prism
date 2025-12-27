@@ -1,0 +1,17 @@
+{
+    "name": "prism/starter",
+    "description": "Prism Starter Template - A Thin Client for the Prism Brand Factory.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "prism/core-engine": "*"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

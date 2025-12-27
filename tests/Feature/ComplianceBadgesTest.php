@@ -9,7 +9,7 @@ use Tests\Concerns\InteractsWithTemporaryClient;
 
 uses(InteractsWithTemporaryClient::class);
 
-it('renders compliance badge library with scalable svg attributes', function (): void {
+it('renders compliance badge library with scalable svg attributes and localization', function (): void {
     $this->setupTemporaryClient('compliance-badges');
 
     $this->createSourceFile('index.blade.php', <<<'BLADE'
@@ -19,9 +19,9 @@ title: Badges
 ---
 
 <div class="space-y-6">
-    <x-prism::compliance.badges.gmp class="w-20 text-primary" />
-    <x-prism::compliance.badges.fda-registered class="w-24 text-secondary" />
-    <x-prism::compliance.badges.made-in-usa class="w-32 text-primary" />
+    <x-prism::compliance.badges.gmp class="w-20 text-primary" text="CERTIFIED" />
+    <x-prism::compliance.badges.fda-registered class="w-24 text-secondary" bottom-text="FACILITY" />
+    <x-prism::compliance.badges.made-in-usa class="w-32 text-primary" text="AMERICA" />
 </div>
 BLADE);
 
@@ -67,9 +67,17 @@ PHP
 
     $html = $this->getBuildFileContent('index.html');
 
-    expect($html)->toContain('aria-label="GMP Certified Badge"');
-    expect($html)->toContain('aria-label="FDA Registered Facility Badge"');
-    expect($html)->toContain('aria-label="Made in USA Badge"');
+    // Check defaults are overridden
+    expect($html)->toContain('CERTIFIED');
+    expect($html)->not->toContain('>GMP<');
+    
+    expect($html)->toContain('FACILITY');
+    expect($html)->not->toContain('>REGISTERED<');
+
+    expect($html)->toContain('AMERICA');
+    expect($html)->not->toContain('>USA<');
+
+    // Check accessibility and sizing
     expect($html)->toContain('role="img"');
     expect($html)->toContain('w-20');
     expect($html)->toContain('w-24');
@@ -77,4 +85,3 @@ PHP
 
     $this->cleanupTemporaryClient();
 });
-

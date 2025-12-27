@@ -60,6 +60,19 @@ $events->beforeBuild([
 - `BuildValidator` loads `config.php`, validates it via `ConfigData::from()`, and halts the build with clear console errors when invalid.
 - On success, the validated `ConfigData` is bound into the container for downstream build steps.
 
+## Fleet Updates
+
+Use the engine CLI to roll out updates across client repos:
+
+```bash
+prism update:all --file=fleet.json --dry-run
+prism update:all --file=fleet.json --push   # run updates + push
+
+prism build:all --file=fleet.json --stop-on-failure
+```
+
+Fleet file: JSON array of repo paths (absolute or relative to the json file).
+
 ## Supplement Facts Component
 
 Render an FDA-aligned panel with `x-prism::supplement-facts`:

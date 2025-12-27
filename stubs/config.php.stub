@@ -1,0 +1,14 @@
+<?php
+
+use Prism\Core\Prism;
+
+return Prism::configure(
+    project_name: '{{ project_name }}',
+    theme_preset: '{{ theme_preset }}',
+    compliance_mode: '{{ compliance_mode }}',
+    brand_colors: [
+        'primary' => '{{ primary_color }}',
+        'secondary' => '#1f2937',
+    ],
+    niche: [],
+);

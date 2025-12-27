@@ -1,6 +1,7 @@
-@php
-    $label = $attributes->get('aria-label', 'GMP Certified Badge');
-@endphp
+@props([
+    'text' => 'GMP',
+    'label' => 'GMP Certified Badge',
+])
 
 <svg {{ $attributes->merge([
     'class' => 'text-primary',
@@ -16,6 +17,5 @@
     <title>{{ $label }}</title>
     <circle cx="32" cy="32" r="26" />
     <path d="M18 32c2.5 2.6 6.8 7.1 8.5 9l0.8 0.9L46 22" />
-    <text x="32" y="54" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">GMP</text>
+    <text x="32" y="54" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="700" fill="currentColor" stroke="none">{{ $text }}</text>
 </svg>
-

@@ -8,53 +8,73 @@ use TightenCo\Jigsaw\Jigsaw;
 
 class TemplateLoader
 {
+    /**
+     * Map of component aliases to their internal view paths.
+     */
+    protected const ALIASES = [
+        'prism::test' => 'prism::components.test',
+        'prism::ui.header' => 'prism::components.ui.header',
+        'prism::ui.footer' => 'prism::components.ui.footer',
+        'prism::ui.hero' => 'prism::components.ui.hero',
+        'prism::ui.product-card' => 'prism::components.ui.product-card',
+        'prism::layout.base' => 'prism::components.layout.base',
+        'prism::compliance-footer' => 'prism::components.compliance-footer',
+        'prism::supplement-facts' => 'prism::components.supplement-facts',
+        'prism::compliance.badges.gmp' => 'prism::components.compliance.badges.gmp',
+        'prism::compliance.badges.fda-registered' => 'prism::components.compliance.badges.fda-registered',
+        'prism::compliance.badges.made-in-usa' => 'prism::components.compliance.badges.made-in-usa',
+        'prism::compliance.badges.fda-shield' => 'prism::components.compliance.badges.fda-shield',
+    ];
+
     public function handle(Jigsaw $jigsaw): void
     {
-        $engineViews = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'views';
+        $engineViews = realpath(__DIR__ . '/../../resources/views');
 
-        if (! is_dir($engineViews)) {
-            // If the path is missing, fail fast with a clear message.
-            throw new \RuntimeException("Prism engine views not found at {$engineViews}");
+        if (! $engineViews || ! is_dir($engineViews)) {
+            throw new \RuntimeException("Prism engine views not found at " . __DIR__ . '/../../resources/views');
         }
 
+        // 1. Register 'prism' namespace
+        $this->registerNamespace($jigsaw, 'prism', $engineViews);
+
+        // 2. Register Blade components
+        $this->registerComponents($jigsaw);
+    }
+
+    protected function registerNamespace(Jigsaw $jigsaw, string $namespace, string $path): void
+    {
+        // Jigsaw Config
         $existing = $jigsaw->getConfig('viewHintPaths') ?? [];
-        $existing['prism'][] = $engineViews;
+        $existing[$namespace][] = $path;
         $jigsaw->setConfig('viewHintPaths', $existing);
 
+        // View Factory
         $viewFactory = $jigsaw->app['view'] ?? null;
-
         if ($viewFactory !== null && method_exists($viewFactory, 'addNamespace')) {
-            $viewFactory->addNamespace('prism', $engineViews);
+            $viewFactory->addNamespace($namespace, $path);
         }
 
+        // View Finder
         if (isset($jigsaw->app['view.finder'])) {
             $finder = $jigsaw->app['view.finder'];
             if (method_exists($finder, 'getPaths') && method_exists($finder, 'setPaths')) {
                 $paths = $finder->getPaths();
-                $paths[] = $engineViews;
+                $paths[] = $path;
                 $finder->setPaths(array_unique($paths));
             }
         }
+    }
 
-        if (isset($jigsaw->app['blade.compiler'])) {
-            $blade = $jigsaw->app['blade.compiler'];
-            $componentsPath = $engineViews . DIRECTORY_SEPARATOR . 'components';
+    protected function registerComponents(Jigsaw $jigsaw): void
+    {
+        if (! isset($jigsaw->app['blade.compiler'])) {
+            return;
+        }
 
-            $blade->anonymousComponentPath($componentsPath, 'prism');
-            $blade->anonymousComponentNamespace($componentsPath, 'prism');
+        $blade = $jigsaw->app['blade.compiler'];
 
-            // Explicit aliases for UI components
-            $blade->component('prism::components.ui.header', 'prism::ui.header');
-            $blade->component('prism::components.ui.footer', 'prism::ui.footer');
-            $blade->component('prism::components.ui.hero', 'prism::ui.hero');
-            $blade->component('prism::components.ui.product-card', 'prism::ui.product-card');
-            $blade->component('prism::components.layout.base', 'prism::layout.base');
-            $blade->component('prism::components.compliance-footer', 'prism::compliance-footer');
-            $blade->component('prism::components.supplement-facts', 'prism::supplement-facts');
-            $blade->component('prism::components.compliance.badges.gmp', 'prism::compliance.badges.gmp');
-            $blade->component('prism::components.compliance.badges.fda-registered', 'prism::compliance.badges.fda-registered');
-            $blade->component('prism::components.compliance.badges.made-in-usa', 'prism::compliance.badges.made-in-usa');
+        foreach (static::ALIASES as $alias => $view) {
+            $blade->component($view, $alias);
         }
     }
 }
-

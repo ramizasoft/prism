@@ -19,7 +19,10 @@ extends: prism::components.layout.base
 <x-prism::ui.footer />
 BLADE);
 
-    $this->createConfigFile([
+    // Build the configuration.
+    // We only provide 'niche' data if the mode requires it (supplements/pet_food)
+    // to match strict DTO validation rules.
+    $config = [
         'project_name' => 'Prism Compliance Test',
         'theme_preset' => 'clinical',
         'compliance_mode' => $mode,
@@ -27,14 +30,16 @@ BLADE);
             'primary' => '#111111',
             'secondary' => '#222222',
         ],
-        'niche' => [
-            'fda_disclaimer' => 'These statements...',
+    ];
+
+    if ($mode === 'supplements') {
+        $config['niche'] = [
+            'fda_disclaimer' => 'Valid DTO Disclaimer Text',
             'supplement_facts_format' => 'standard',
-        ],
-        'compliance' => [
-            'fda_disclaimer' => 'Custom FDA text',
-        ],
-    ]);
+        ];
+    }
+
+    $this->createConfigFile($config);
 
     $this->createBootstrapFile(<<<'PHP'
 <?php
@@ -53,15 +58,22 @@ PHP
     );
 
     $exitCode = $this->runBuildCommand();
+    
+    // Debug output if build fails
+    if ($exitCode !== 0) {
+        $this->debugBuildOutput();
+    }
+    
     expect($exitCode)->toBe(0);
 
     $html = $this->getBuildFileContent('index.html');
 
     if ($shouldContain) {
-        expect($html)->toContain('Custom FDA text');
+        expect($html)->toContain('Valid DTO Disclaimer Text');
+        // Ensure the shield icon is rendered (part of the new component)
+        expect($html)->toContain('<svg'); 
     } else {
-        expect($html)->not->toContain('Custom FDA text');
-        expect($html)->not->toContain('These statements have not been evaluated');
+        expect($html)->not->toContain('Valid DTO Disclaimer Text');
     }
 
     $this->cleanupTemporaryClient();

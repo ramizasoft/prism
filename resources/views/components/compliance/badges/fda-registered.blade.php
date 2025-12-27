@@ -1,6 +1,8 @@
-@php
-    $label = $attributes->get('aria-label', 'FDA Registered Facility Badge');
-@endphp
+@props([
+    'topText' => 'FDA',
+    'bottomText' => 'REGISTERED',
+    'label' => 'FDA Registered Facility Badge',
+])
 
 <svg {{ $attributes->merge([
     'class' => 'text-primary',
@@ -19,7 +21,6 @@
     <path d="M19 44h17" />
     <path d="M38 24h7" />
     <path d="M38 30h10" />
-    <text x="32" y="23" text-anchor="middle" font-size="8" font-weight="700" fill="currentColor">FDA</text>
-    <text x="32" y="52" text-anchor="middle" font-size="7" font-weight="600" fill="currentColor">REGISTERED</text>
+    <text x="32" y="23" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="currentColor" stroke="none">{{ $topText }}</text>
+    <text x="32" y="52" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="600" fill="currentColor" stroke="none">{{ $bottomText }}</text>
 </svg>
-
