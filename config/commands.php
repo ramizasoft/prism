@@ -15,10 +15,7 @@ return [
     |
     */
 
-    'default' => [
-        Prism\Core\Commands\InitCommand::class,
-        Prism\Core\Commands\BuildAllCommand::class,
-    ],
+    'default' => Prism\Core\Commands\InspireCommand::class,
 
     /*
     |--------------------------------------------------------------------------
