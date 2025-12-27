@@ -20,10 +20,16 @@ class TemplateLoader
         'prism::layout.base' => 'prism::components.layout.base',
         'prism::compliance-footer' => 'prism::components.compliance-footer',
         'prism::supplement-facts' => 'prism::components.supplement-facts',
+        'prism::nutrition-facts' => 'prism::components.nutrition-facts',
         'prism::compliance.badges.gmp' => 'prism::components.compliance.badges.gmp',
         'prism::compliance.badges.fda-registered' => 'prism::components.compliance.badges.fda-registered',
         'prism::compliance.badges.made-in-usa' => 'prism::components.compliance.badges.made-in-usa',
         'prism::compliance.badges.fda-shield' => 'prism::components.compliance.badges.fda-shield',
+        'prism::compliance.badges.vet-recommended' => 'prism::components.compliance.badges.vet-recommended',
+        'prism::cosmetic.science-section' => 'prism::components.cosmetic.science-section',
+        'prism::eco.sustainability-section' => 'prism::components.eco.sustainability-section',
+        'prism::tech.support-hub' => 'prism::components.tech.support-hub',
+        'prism::pet.safety-section' => 'prism::components.pet.safety-section',
     ];
 
     public function handle(Jigsaw $jigsaw): void

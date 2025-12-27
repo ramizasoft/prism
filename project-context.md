@@ -94,7 +94,11 @@ The project follows a **'Factory Pattern'** for web development, separating the 
 - **Multi-Niche Presets:** Clinical (Vitamins), Playful (Pet Products), Luxury (Artisanal), Organic.
 - **Compliance Mode:** 
     - **Supplements:** Injects FDA disclaimers and Supplement Facts panels.
-    - **Pet Food:** Injects AAFCO statements and Guaranteed Analysis tables.
+    - **Pet Care:** Injects AAFCO statements, 'Safety Promise' sections, and Vet Recommended badges.
+    - **Cosmetics:** Injects Science/Efficacy sections using safe, non-medical language.
+    - **Eco-Friendly:** Injects Sustainability Mission and Certification badges.
+    - **Tech:** Injects Support Hubs with Manual Downloads and Video Guides.
+    - **Food:** Injects FDA-compliant Nutrition Facts panels.
 - **Lead Magnet Integration:** Integrated email acquisition to own the audience.
 - **Amazon-First Design:** Optimized 'Buy on Amazon' CTAs and Brand Registry compliance.
 

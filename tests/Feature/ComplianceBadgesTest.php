@@ -22,6 +22,7 @@ title: Badges
     <x-prism::compliance.badges.gmp class="w-20 text-primary" text="CERTIFIED" />
     <x-prism::compliance.badges.fda-registered class="w-24 text-secondary" bottom-text="FACILITY" />
     <x-prism::compliance.badges.made-in-usa class="w-32 text-primary" text="AMERICA" />
+    <x-prism::compliance.badges.vet-recommended class="w-28 text-primary" top-text="PET" bottom-text="APPROVED" />
 </div>
 BLADE);
 
@@ -63,6 +64,9 @@ PHP
     );
 
     $exitCode = $this->runBuildCommand();
+    if ($exitCode !== 0) {
+        fwrite(STDERR, $this->getBuildOutput());
+    }
     expect($exitCode)->toBe(0);
 
     $html = $this->getBuildFileContent('index.html');
@@ -77,10 +81,15 @@ PHP
     expect($html)->toContain('AMERICA');
     expect($html)->not->toContain('>USA<');
 
+    expect($html)->toContain('PET');
+    expect($html)->toContain('APPROVED');
+    expect($html)->not->toContain('>RECOMMENDED<');
+
     // Check accessibility and sizing
     expect($html)->toContain('role="img"');
     expect($html)->toContain('w-20');
     expect($html)->toContain('w-24');
+    expect($html)->toContain('w-28');
     expect($html)->toContain('w-32');
 
     $this->cleanupTemporaryClient();
