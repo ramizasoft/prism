@@ -57,16 +57,52 @@ prism init
    - Scaffolds a basic `source` directory.
 
 3. **Install & Build:**
+
    ```bash
-composer install
-./vendor/bin/jigsaw build
-./vendor/bin/jigsaw serve
+
+   composer install
+
+   prism build
+
+   prism build production
+
    ```
+
+
 
 ---
 
+
+
 ## Core Workflows
-### 1. Client Repository Setup
+
+
+
+### 1. Building your site
+
+
+
+Instead of calling the Jigsaw binary manually, use the Prism wrapper:
+
+
+
+```bash
+
+# Development build (local)
+
+prism build
+
+
+
+# Production build (optimized)
+
+prism build production
+
+```
+
+
+
+### 2. Client Repository Setup
 
 Prism uses a "Thin Client" pattern. Client repositories depend on the `prism` core package.
 
