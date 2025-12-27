@@ -12,42 +12,60 @@ Built by RamizaSoft, Prism acts as a "factory" engine that powers 50+ client ins
 - **Configuration:** Spatie Laravel Data (DTOs)
 - **Language:** PHP 8.2+ (Strict Types)
 
----
+## Getting Started
 
-## Installation
+### Prerequisites
 
-### As a Library (Recommended for Clients)
-In your client Jigsaw project, run:
-```bash
-composer require ramizasoft/prism
-```
+- PHP 8.2 or higher
+- Composer
+- Node.js & NPM
 
-### As a Global CLI Tool (For Fleet Management)
+### Installation
+
+**Option 1: Global Installation (Recommended for creating new projects)**
 ```bash
 composer global require ramizasoft/prism
 ```
 
-### Development Setup
-1. **Clone the repository:**
+**Option 2: Local Installation (For existing projects)**
+```bash
+composer require ramizasoft/prism
+```
+
+---
+
+## Creating a New Project
+
+The easiest way to start is using the `init` command.
+
+1. **Create a directory:**
    ```bash
-   git clone https://github.com/ramizasoft/prism.git
-   cd prism
+mkdir my-brand
+cd my-brand
    ```
 
-2. **Install dependencies:**
+2. **Initialize the project:**
    ```bash
-   composer install
+prism init
    ```
+   Follow the interactive prompts to set your Project Name, Niche (Clinical, Playful, etc.), and Brand Color.
 
-3. **Build the assets:**
+   **This command automatically:**
+   - Generates `config.php` with your settings.
+   - Creates `bootstrap.php` to link the core engine.
+   - Sets up `composer.json` with the correct dependencies.
+   - Scaffolds a basic `source` directory.
+
+3. **Install & Build:**
    ```bash
-   npm run build
+composer install
+./vendor/bin/jigsaw build
+./vendor/bin/jigsaw serve
    ```
 
 ---
 
 ## Core Workflows
-
 ### 1. Client Repository Setup
 
 Prism uses a "Thin Client" pattern. Client repositories depend on the `prism` core package.
