@@ -1,8 +1,4 @@
-# Story 6.3: Internal Documentation Site (Built with Prism)
-
-Status: ready-for-dev
-
-<!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
+Status: done
 
 ## Story
 
@@ -12,27 +8,27 @@ so that I can learn the Prism workflow independently.
 
 ## Acceptance Criteria
 
-1. [ ] A new directory `docs` is created in the root of the project.
-2. [ ] This directory is a valid Prism site (cloned from starter or manually setup).
-3. [ ] It uses the `prism` engine to build itself (Dogfooding).
-4. [ ] Content includes:
-    - [ ] `installation.md`: Steps to set up the engine and starter.
-    - [ ] `configuration.md`: Reference for `config.php` options.
-    - [ ] `compliance.md`: Guide to Supplements and Pet Food modes.
-5. [ ] The site builds successfully and renders the documentation using the Clinical preset (or a new "Docs" preset if time permits).
+1. [x] A new directory `docs` is created in the root of the project.
+2. [x] This directory is a valid Prism site (cloned from starter or manually setup).
+3. [x] It uses the `prism` engine to build itself (Dogfooding).
+4. [x] Content includes:
+    - [x] `installation.md`: Steps to set up the engine and starter.
+    - [x] `configuration.md`: Reference for `config.php` options.
+    - [x] `compliance.md`: Guide to Supplements and Pet Food modes.
+5. [x] The site builds successfully and renders the documentation using the Clinical preset (or a new "Docs" preset if time permits).
 
 ## Tasks / Subtasks
 
-- [ ] Initialize Docs Site (AC: 1, 2)
-  - [ ] Use `prism create:client docs` (Dogfooding Story 5.3) or manual setup.
-- [ ] Write Content (AC: 4)
-  - [ ] Write clear, Markdown-based documentation.
-  - [ ] Use the `project-context.md` and `prd.md` as source material.
-- [ ] Configure Dogfooding (AC: 3)
-  - [ ] Ensure the `docs` site points to the local `../prism-engine` path in `composer.json` (symlink/repository path) so it uses the latest code.
-- [ ] Build & Verify (AC: 5)
-  - [ ] Run `prism build` in the `docs` folder.
-  - [ ] Serve the site and verify navigation and styling.
+- [x] Initialize Docs Site (AC: 1, 2)
+  - [x] Use `prism create:client docs` (Dogfooding Story 5.3) or manual setup.
+- [x] Write Content (AC: 4)
+  - [x] Write clear, Markdown-based documentation.
+  - [x] Use the `project-context.md` and `prd.md` as source material.
+- [x] Configure Dogfooding (AC: 3)
+  - [x] Ensure the `docs` site points to the local `../prism-engine` path in `composer.json` (symlink/repository path) so it uses the latest code.
+- [x] Build & Verify (AC: 5)
+  - [x] Run `prism build` in the `docs` folder.
+  - [x] Serve the site and verify navigation and styling.
 
 ## Dev Notes
 
@@ -52,10 +48,28 @@ so that I can learn the Prism workflow independently.
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Gemini 2.5 Flash
 
 ### Debug Log References
 
+- Initialized `docs` directory by copying `prism-starter`.
+- Created documentation content in `docs/source/docs/`.
+- Configured `docs/composer.json` to use local engine via path repository.
+- Updated `index.blade.php` with documentation navigation.
+- Successfully built the site using `php prism build`.
+
 ### Completion Notes List
 
+- Site successfully dogfoods the Prism engine.
+- Documentation covers installation, configuration, and compliance.
+- All acceptance criteria satisfied.
+
 ### File List
+
+- `docs/composer.json`
+- `docs/config.php`
+- `docs/bootstrap.php`
+- `docs/source/index.blade.php`
+- `docs/source/docs/installation.md`
+- `docs/source/docs/configuration.md`
+- `docs/source/docs/compliance.md`

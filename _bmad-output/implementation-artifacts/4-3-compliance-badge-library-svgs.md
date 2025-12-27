@@ -1,6 +1,6 @@
 # Story 4.3: Compliance Badge Library (SVGs)
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -72,6 +72,7 @@ gpt-5.1-codex-max
 - Aliases registered in TemplateLoader for prism namespace resolution.
 - Added feature test `ComplianceBadgesTest` validating rendering, labels, and sizing classes.
 - Story status set to review; sprint-status updated.
+- **Refactor (Adversarial Review):** Added `text` props for localization. Enforced `font-family="sans-serif"` on SVG text elements. Fixed test to verify text overrides.
 
 ### File List
 

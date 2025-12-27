@@ -1,6 +1,6 @@
 # Story 1.3: Custom Template Loader (The "Thin Client" Pattern)
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -67,10 +67,11 @@ gpt-5.1-codex-max (OpenAI)
 
 ### Completion Notes List
 
-- ✅ Added `TemplateLoader` listener to register the `prism::` namespace pointing at engine `resources/views` via Jigsaw config.
-- ✅ Added core test component `prism::test` and wired bootstrap registration during builds.
-- ✅ Refined `BuildCommand` to invoke Jigsaw with auto-prepended autoload, ensuring helper availability in Laravel Zero context.
-- ✅ Feature test exercises end-to-end build from a thin client stub, asserting generated HTML includes the core component.
+- ✅ Added `TemplateLoader` listener to register the `prism::` namespace pointing at engine `resources/views`.
+- ✅ **Zero-Config Implementation**: Refactored `BuildCommand` to automatically inject the `TemplateLoader` registration if `bootstrap.php` is missing in the client repo.
+- ✅ Refactored `TemplateLoader` to use a clean `ALIASES` constant and robust `realpath` resolution.
+- ✅ Fixed duplicate content in core test component `prism::test`.
+- ✅ Feature test now correctly exercises the "Thin Client" pattern by verifying it works without a manual `bootstrap.php`.
 
 ### File List
 

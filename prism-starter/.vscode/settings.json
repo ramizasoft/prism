@@ -1,0 +1,12 @@
+{
+    "php.suggest.basic": false,
+    "intelephense.completion.fullyQualifiedSymbols": false,
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "prism.json"
+            ],
+            "url": "../resources/schemas/prism-config.json"
+        }
+    ]
+}

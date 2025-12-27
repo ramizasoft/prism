@@ -1,6 +1,6 @@
 # Story 4.2: Structured Supplement Facts Component
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -77,7 +77,8 @@ gpt-5.1-codex-max
 - Added feature test covering nested nutrients/blends plus DV fallback.
 - Updated documentation with usage and data schema for the new component.
 - Fixed Spatie Data DTO inheritance compatibility by dropping readonly class modifiers while retaining readonly properties.
-- Story status set to review; sprint-status updated accordingly.
+- **Refactor (Adversarial Review):** Replaced raw array normalization with `SupplementFactsData` DTO. Fixed CSS to use theme variables. Corrected proprietary blend layout.
+- Story status set to done; sprint-status updated accordingly.
 
 ### File List
 

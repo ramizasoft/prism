@@ -69,6 +69,11 @@ PHP
     );
 
     $exitCode = $this->runBuildCommand();
+    
+    if ($exitCode !== 0) {
+        $this->debugBuildOutput();
+    }
+    
     expect($exitCode)->toBe(0);
 
     $html = $this->getBuildFileContent('index.html');
@@ -87,7 +92,9 @@ PHP
     expect($html)->toContain('Muscle Blend');
     expect($html)->toContain('Creatine Monohydrate');
     expect($html)->toContain('BCAA Complex');
+    
+    // Verify standard FDA footnote
+    expect($html)->toContain('* Percent Daily Values are based on a 2,000 calorie diet.');
 
     $this->cleanupTemporaryClient();
 });
-

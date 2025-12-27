@@ -1,6 +1,6 @@
 # Story 4.1: Automated FDA Disclaimer Injection
 
-Status: review
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -63,6 +63,7 @@ gpt-5.1-codex-max
 - Added lang-backed/default disclaimer with config override support; avoided Laravel helpers for Jigsaw.
 - Integrated footer component into UI footer; registered component alias in TemplateLoader.
 - Added feature coverage for supplements vs none modes.
+- **Refactor (Adversarial Review):** Fixed raw config usage, brittle pathing, and split-brain tests. Extracted `fda-shield` to reusable component.
 
 ### Completion Notes List
 
@@ -75,6 +76,7 @@ gpt-5.1-codex-max
 
 - resources/lang/en/compliance.php
 - resources/views/components/compliance-footer.blade.php
+- resources/views/components/compliance/badges/fda-shield.blade.php
 - resources/views/components/ui/footer.blade.php
 - src/Listeners/TemplateLoader.php
 - tests/Feature/ComplianceFooterTest.php

@@ -1,6 +1,6 @@
 # Story 5.3: `prism create:client` Wizard
 
-Status: ready-for-dev
+Status: done
 
 <!-- Note: Validation is optional. Run validate-create-story for quality check before dev-story. -->
 
@@ -12,33 +12,33 @@ so that I don't miss any setup steps.
 
 ## Acceptance Criteria
 
-1. [ ] A `prism create:client {name}` command is created in the engine.
-2. [ ] The command initiates an interactive wizard if arguments are missing.
-3. [ ] The wizard asks for:
+1. [x] A `prism create:client {name}` command is created in the engine.
+2. [x] The command initiates an interactive wizard if arguments are missing.
+3. [x] The wizard asks for:
     - Site Title (string)
     - Niche (choice: Clinical/Supplements, Playful/Pet, etc.)
     - Primary Color (string/hex)
-4. [ ] The command clones the `prism-starter` repository (URL should be configurable or hardcoded to the project repo for now).
-5. [ ] The command populates the `config.php` in the new directory with the answers provided.
-6. [ ] The command automatically runs `composer install` and `npm install` in the new directory.
-7. [ ] A final success message provides instructions on how to start the local preview.
+4. [x] The command clones the `prism-starter` repository (URL should be configurable or hardcoded to the project repo for now).
+5. [x] The command populates the `config.php` in the new directory with the answers provided.
+6. [x] The command automatically runs `composer install` and `npm install` in the new directory.
+7. [x] A final success message provides instructions on how to start the local preview.
 
 ## Tasks / Subtasks
 
-- [ ] Create Command (AC: 1, 2)
-  - [ ] `app/Commands/CreateClientCommand.php`
-  - [ ] Signature: `create:client {name?}`
-- [ ] Implement Wizard (AC: 3)
-  - [ ] Use `$this->ask()` for Name and Colors.
-  - [ ] Use `$this->choice()` for Niche.
-- [ ] Implement Scaffolding Logic (AC: 4, 6)
-  - [ ] Use `Symfony\Component\Process\Process` to run `git clone`.
-  - [ ] Use `Process` to run `composer install` and `npm install`.
-- [ ] Implement Config Population (AC: 5)
-  - [ ] Use `Illuminate\Filesystem\Filesystem` to read a `config.php` stub or the cloned `config.php`.
-  - [ ] Perform string replacements or use a template engine approach to inject variables.
-- [ ] Testing
-  - [ ] Create a feature test that mocks the interactive inputs and verifies the resulting directory structure and `config.php` content.
+- [x] Create Command (AC: 1, 2)
+  - [x] `app/Commands/CreateClientCommand.php`
+  - [x] Signature: `create:client {name?}`
+- [x] Implement Wizard (AC: 3)
+  - [x] Use `$this->ask()` for Name and Colors.
+  - [x] Use `$this->choice()` for Niche.
+- [x] Implement Scaffolding Logic (AC: 4, 6)
+  - [x] Use `Symfony\Component\Process\Process` to run `git clone`.
+  - [x] Use `Process` to run `composer install` and `npm install`.
+- [x] Implement Config Population (AC: 5)
+  - [x] Use `Illuminate\Filesystem\Filesystem` to read a `config.php` stub or the cloned `config.php`.
+  - [x] Perform string replacements or use a template engine approach to inject variables.
+- [x] Testing
+  - [x] Create a feature test that mocks the interactive inputs and verifies the resulting directory structure and `config.php` content.
 
 ## Dev Notes
 
@@ -66,4 +66,14 @@ so that I don't miss any setup steps.
 
 ### Completion Notes List
 
+- Implemented `prism create:client` command with interactive wizard.
+- Implemented scaffolding logic (git clone, composer install, npm install) using `Process` facade.
+- Implemented config population using `stubs/config.php.stub`.
+- Added `tests/Feature/CreateClientCommandTest.php` with 100% pass rate.
+- Verified all acceptance criteria.
+
 ### File List
+
+- app/Commands/CreateClientCommand.php
+- tests/Feature/CreateClientCommandTest.php
+- stubs/config.php.stub
