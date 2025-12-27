@@ -15,7 +15,10 @@ return [
     |
     */
 
-    'default' => NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
+    'default' => [
+        Prism\Core\Commands\InitCommand::class,
+        Prism\Core\Commands\BuildAllCommand::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
