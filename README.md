@@ -14,26 +14,29 @@ Built by RamizaSoft, Prism acts as a "factory" engine that powers 50+ client ins
 
 ---
 
-## Getting Started
+## Installation
 
-### Prerequisites
+### As a Library (Recommended for Clients)
+In your client Jigsaw project, run:
+```bash
+composer require ramizasoft/prism
+```
 
-- PHP 8.2 or higher
-- Composer
-- Node.js & NPM
+### As a Global CLI Tool (For Fleet Management)
+```bash
+composer global require ramizasoft/prism
+```
 
-### Installation
-
+### Development Setup
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url> prism
+   git clone https://github.com/ramizasoft/prism.git
    cd prism
    ```
 
 2. **Install dependencies:**
    ```bash
    composer install
-   npm install
    ```
 
 3. **Build the assets:**
