@@ -1,48 +1,57 @@
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" alt="Laravel Zero Logo" />
-</p>
+# Prism (Brand Factory Generator)
 
-<p align="center">
-  <a href="https://github.com/laravel-zero/framework/actions"><img src="https://github.com/laravel-zero/laravel-zero/actions/workflows/tests.yml/badge.svg" alt="Build Status" /></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/dt/laravel-zero/framework.svg" alt="Total Downloads" /></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/v/laravel-zero/framework.svg?label=stable" alt="Latest Stable Version" /></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://img.shields.io/packagist/l/laravel-zero/framework.svg" alt="License" /></a>
-</p>
+**A high-performance static site generator platform for Amazon sellers to achieve brand verification and own their audience.**
 
-Laravel Zero was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owen Voke](https://github.com/owenvoke), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
+Built by RamizaSoft, Prism acts as a "factory" engine that powers 50+ client instances with a shared core, ensuring consistent compliance, performance (100/100 Lighthouse), and branding.
 
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
-- Follow the creator Nuno Maduro:
-    - YouTube: **[youtube.com/@nunomaduro](https://www.youtube.com/@nunomaduro)** — Videos every weekday
-    - Twitch: **[twitch.tv/enunomaduro](https://www.twitch.tv/enunomaduro)** — Streams (almost) every weekday
-    - Twitter / X: **[x.com/enunomaduro](https://x.com/enunomaduro)**
-    - LinkedIn: **[linkedin.com/in/nunomaduro](https://www.linkedin.com/in/nunomaduro)**
-    - Instagram: **[instagram.com/enunomaduro](https://www.instagram.com/enunomaduro)**
-    - Tiktok: **[tiktok.com/@enunomaduro](https://www.tiktok.com/@enunomaduro)**
+## Technology Stack
 
-------
+- **Core Engine:** Laravel Zero (v12.x)
+- **SSG:** Jigsaw (v1.8.3) with Vite
+- **Styling:** Tailwind CSS (JIT Mode)
+- **Configuration:** Spatie Laravel Data (DTOs)
+- **Language:** PHP 8.2+ (Strict Types)
 
-## Documentation
+---
 
-For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
+## Getting Started
 
-## Support the development
-**Do you like this project? Support it by donating**
+### Prerequisites
 
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
+- PHP 8.2 or higher
+- Composer
+- Node.js & NPM
 
-## License
+### Installation
 
-Laravel Zero is an open-source software licensed under the MIT license.
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url> prism
+   cd prism
+   ```
 
-## Prism Build Validation
+2. **Install dependencies:**
+   ```bash
+   composer install
+   npm install
+   ```
 
-Add the Prism build listeners to your client `bootstrap.php` so builds fail fast on invalid `config.php`:
+3. **Build the assets:**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## Core Workflows
+
+### 1. Client Repository Setup
+
+Prism uses a "Thin Client" pattern. Client repositories depend on the `prism` core package.
+
+**Configuration (`bootstrap.php`):**
+
+Add the build listeners to the client's `bootstrap.php` to enable validation and template loading:
 
 ```php
 <?php
@@ -57,32 +66,72 @@ $events->beforeBuild([
 ]);
 ```
 
-- `BuildValidator` loads `config.php`, validates it via `ConfigData::from()`, and halts the build with clear console errors when invalid.
-- On success, the validated `ConfigData` is bound into the container for downstream build steps.
+- **`BuildValidator`**: Loads `config.php`, strictly validates it, and halts the build on error.
+- **`TemplateLoader`**: Registers the correct Blade templates based on the active preset.
 
-## Fleet Updates
+### 2. Fleet Management
 
-Use the engine CLI to roll out updates across client repos:
+Use the Prism CLI to manage updates across multiple client repositories.
+
+**Update all clients:**
 
 ```bash
-prism update:all --file=fleet.json --dry-run
-prism update:all --file=fleet.json --push   # run updates + push
+# Dry run to see what will happen
+php prism update:all --file=fleet.json --dry-run
 
-prism build:all --file=fleet.json --stop-on-failure
+# Execute updates and push to remote
+php prism update:all --file=fleet.json --push
 ```
 
-Fleet file: JSON array of repo paths (absolute or relative to the json file).
+**Build all clients:**
 
-## Supplement Facts Component
+```bash
+# Stop immediately if a build fails
+php prism build:all --file=fleet.json --stop-on-failure
+```
 
-Render an FDA-aligned panel with `x-prism::supplement-facts`:
+**Fleet File Format (`fleet.json`):**
+A JSON array of repository paths (absolute or relative to the JSON file).
+
+```json
+[
+    "../clients/brand-alpha",
+    "../clients/brand-beta"
+]
+```
+
+### 3. Using Components
+
+**Supplement Facts Panel:**
+Renders an FDA-aligned panel. Usage in Blade:
 
 ```blade
 <x-prism::supplement-facts :data="$page->supplement" />
 ```
 
-Data keys:
+**Data Structure:**
+The `$page->supplement` data must match the schema:
 - `serving_size` (string)
 - `servings_per_container` (string)
-- `nutrients` (array of `{ name, amount, dv_percent|null, source }`)
-- `proprietary_blends` (optional array of `{ name, amount, ingredients[] }`)
+- `nutrients` (array of objects)
+- `proprietary_blends` (optional array)
+
+---
+
+## Development Standards
+
+### Code Quality
+- **Strict Typing:** All files must start with `declare(strict_types=1);`.
+- **Testing:** We use **Pest PHP**. Run tests with `./vendor/bin/pest`.
+- **Formatting:** Code must adhere to PSR-12.
+
+### Adding Features
+1. **Core First:** Implement logic in `prism` core, not client repos.
+2. **Config Driven:** Use `PrismConfig` DTOs to drive behavior.
+3. **Validate:** Add validation rules to DTOs to fail fast.
+
+---
+
+## License
+
+Prism is open-source software licensed under the [MIT license](LICENSE.md).
