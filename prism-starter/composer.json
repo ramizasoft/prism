@@ -4,14 +4,8 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "prism/core-engine": "*"
+        "ramizasoft/prism": "^1.0"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../"
-        }
-    ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
