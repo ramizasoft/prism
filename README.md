@@ -170,4 +170,4 @@ Renders an FDA-aligned panel. Usage in Blade:
 
 ## License
 
-Prism is open-source software licensed under the [MIT license](LICENSE.md).
+Prism is open-source software licensed under the [MIT license](LICENSE).
