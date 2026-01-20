@@ -3,3 +3,8 @@
 /.vscode
 /.vagrant
 .phpunit.result.cache
+
+/_bmad
+/_bmad-output
+/.cursor
+/.gemini
