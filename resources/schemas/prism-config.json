@@ -10,9 +10,24 @@
             "type": "string",
             "enum": [
                 "clinical",
+                "clinical-precision",
+                "clinical-lab",
+                "clinical-sport",
                 "playful",
+                "playful-paws",
+                "playful-boing",
+                "playful-threads",
                 "luxury",
-                "organic"
+                "luxury-noir",
+                "luxury-velvet",
+                "luxury-atelier",
+                "organic",
+                "organic-moss",
+                "organic-apothecary",
+                "organic-farmstead",
+                "eco",
+                "eco-clean-minimal",
+                "eco-kraft"
             ]
         },
         "compliance_mode": {
@@ -20,7 +35,11 @@
             "enum": [
                 "none",
                 "supplements",
-                "pet_food"
+                "pet_food",
+                "cosmetic",
+                "eco",
+                "tech",
+                "food"
             ]
         },
         "brand_colors": {

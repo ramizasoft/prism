@@ -13,8 +13,11 @@ it('runs builds across fleet and reports failure', function (): void {
     $filesystem->ensureDirectoryExists($tempRoot . '/client-success');
     $filesystem->ensureDirectoryExists($tempRoot . '/client-fail');
 
-    file_put_contents($tempRoot . '/client-success/prism', "<?php echo 'ok'; exit(0);");
-    file_put_contents($tempRoot . '/client-fail/prism', "<?php fwrite(STDERR, 'broken'); exit(1);");
+    $filesystem->ensureDirectoryExists($tempRoot . '/client-success/vendor/bin');
+    $filesystem->ensureDirectoryExists($tempRoot . '/client-fail/vendor/bin');
+
+    file_put_contents($tempRoot . '/client-success/vendor/bin/prism', "<?php echo 'ok'; exit(0);");
+    file_put_contents($tempRoot . '/client-fail/vendor/bin/prism', "<?php fwrite(STDERR, 'broken'); exit(1);");
 
     file_put_contents($tempRoot . '/fleet.json', json_encode([
         'client-success',

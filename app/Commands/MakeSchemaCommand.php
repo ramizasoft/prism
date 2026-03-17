@@ -8,6 +8,7 @@ use LaravelZero\Framework\Commands\Command;
 use Prism\Core\Data\ConfigData;
 use ReflectionClass;
 use ReflectionProperty;
+use Spatie\LaravelData\Attributes\Validation\In;
 
 class MakeSchemaCommand extends Command
 {
@@ -81,12 +82,14 @@ class MakeSchemaCommand extends Command
 
             $properties[$name] = ['type' => $schemaType];
 
-            // Add enum-like support for theme_preset and compliance_mode if we were more advanced
-            if ($name === 'theme_preset') {
-                $properties[$name]['enum'] = ['clinical', 'playful', 'luxury', 'organic'];
-            }
-            if ($name === 'compliance_mode') {
-                $properties[$name]['enum'] = ['none', 'supplements', 'pet_food'];
+            // If a Data property uses Spatie's In(...) validation attribute, mirror it as a JSON Schema enum.
+            $in = $property->getAttributes(In::class)[0] ?? null;
+            if ($in !== null) {
+                $args = $in->getArguments();
+                $values = $args[0] ?? null;
+                if (is_array($values) && $values !== []) {
+                    $properties[$name]['enum'] = array_values($values);
+                }
             }
         }
 

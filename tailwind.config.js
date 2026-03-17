@@ -12,7 +12,8 @@ module.exports = {
                 secondary: 'var(--prism-color-secondary)',
             },
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                sans: ['var(--prism-font-body, Inter)', ...defaultTheme.fontFamily.sans],
+                display: ['var(--prism-font-display, ui-serif)', ...defaultTheme.fontFamily.serif],
             },
         },
     },

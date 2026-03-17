@@ -1,0 +1,11 @@
+{
+    "name": "client/my-new-site",
+    "description": "Prism Starter Template - A Thin Client for the Prism Brand Factory.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "ramizasoft/prism": "^1.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

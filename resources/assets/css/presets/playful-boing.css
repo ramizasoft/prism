@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "Baloo 2";
+    --prism-font-body: "Nunito Sans";
+
+    --boing-blue: #0066FF;
+    --boing-pink: #FF2D7E;
+    --boing-yellow: #FFE84A;
+    --boing-white: #FFFBF0;
+    --boing-purple: #8B5CF6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), system-ui, -apple-system, sans-serif;
+    color: #20132c;
+    line-height: 1.6;
+    background:
+        radial-gradient(900px 520px at 0% 0%, rgba(0, 102, 255, 0.28), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(255, 45, 126, 0.26), transparent 60%),
+        linear-gradient(180deg, #fefeff 0%, var(--boing-white) 100%);
+}
+
+/* Toy polka-dot wallpaper */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.2) 0, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(255, 45, 126, 0.2) 0, transparent 40%),
+        radial-gradient(circle at 30% 80%, rgba(139, 92, 246, 0.22) 0, transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(255, 232, 74, 0.25) 0, transparent 45%);
+    opacity: 0.65;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #12091b;
+}
+
+a {
+    color: var(--boing-blue);
+    text-decoration: none;
+    text-underline-offset: 0.20em;
+}
+
+a:hover {
+    color: var(--boing-pink);
+    text-decoration: underline;
+}
+
+/* Header: chunky toy bar */
+.boing-header {
+    background:
+        linear-gradient(180deg, rgba(255, 251, 240, 0.98), rgba(255, 251, 240, 0.9));
+    border-bottom: 3px solid rgba(0, 102, 255, 0.35);
+    box-shadow:
+        0 8px 0 rgba(255, 232, 74, 0.9),
+        0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.boing-logo {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #12091b;
+}
+
+.boing-nav a {
+    color: rgba(32, 19, 44, 0.88);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.boing-nav a:hover {
+    color: var(--boing-blue);
+}
+
+/* Diagonal tape divider */
+.boing-stripe {
+    height: 6px;
+    background-image:
+        repeating-linear-gradient(
+            135deg,
+            var(--boing-blue) 0,
+            var(--boing-blue) 14px,
+            var(--boing-yellow) 14px,
+            var(--boing-yellow) 28px,
+            var(--boing-pink) 28px,
+            var(--boing-pink) 42px
+        );
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Hero: bouncy card with offset border */
+.boing-hero {
+    position: relative;
+    border-radius: 1.5rem;
+    border: 3px solid #12091b;
+    background:
+        radial-gradient(900px 520px at 15% 0%, rgba(0, 102, 255, 0.28), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(255, 45, 126, 0.32), transparent 60%),
+        linear-gradient(135deg, var(--boing-white), #fdf4ff);
+    box-shadow:
+        8px 10px 0 #12091b,
+        0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.boing-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.boing-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: #12091b;
+    color: #fefce8;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.boing-kicker::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--boing-yellow);
+    box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.65);
+}
+
+.boing-cta {
+    border-radius: 999px;
+    padding: 0.85rem 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #12091b;
+    background:
+        linear-gradient(180deg, var(--boing-yellow), #ffd83b);
+    box-shadow:
+        0 10px 0 rgba(0, 0, 0, 0.35),
+        0 18px 36px rgba(0, 0, 0, 0.3);
+}
+
+.boing-cta:hover {
+    transform: translateY(-2px);
+}
+
+.boing-secondaryLink {
+    color: rgba(32, 19, 44, 0.9);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.boing-secondaryLink:hover {
+    color: var(--boing-pink);
+}
+
+/* Product cards: sticker-style */
+.boing-card {
+    position: relative;
+    border-radius: 1.75rem;
+    border: 3px solid #12091b;
+    background: #ffffff;
+    box-shadow:
+        6px 8px 0 #12091b,
+        0 18px 32px rgba(0, 0, 0, 0.26);
+    transform: rotate(-1.5deg);
+    transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.boing-card:nth-child(2n) {
+    transform: rotate(1.5deg);
+}
+
+.boing-card:hover {
+    transform: translateY(-4px) rotate(0deg);
+    box-shadow:
+        10px 12px 0 #12091b,
+        0 24px 40px rgba(0, 0, 0, 0.32);
+}
+
+.boing-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: #12091b;
+    color: #fefce8;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.boing-footer {
+    border-top: 3px solid #12091b;
+    background:
+        linear-gradient(180deg, var(--boing-white), #fee2f2);
+}
+
+.boing-footTitle {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+

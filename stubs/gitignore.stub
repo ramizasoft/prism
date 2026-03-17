@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+
+# Jigsaw / Prism build output
+build_*
+build
+
+# Vite output (manifest + hashed assets)
+source/assets/build
+

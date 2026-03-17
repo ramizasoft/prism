@@ -25,7 +25,27 @@ final class ConfigData extends Data
         #[Required, StringType, Min(3)]
         public readonly string $project_name,
 
-        #[Required, StringType, In(['clinical', 'playful', 'luxury', 'organic'])]
+        #[Required, StringType, In([
+            'clinical',
+            'clinical-precision',
+            'clinical-lab',
+            'clinical-sport',
+            'playful',
+            'playful-paws',
+            'playful-boing',
+            'playful-threads',
+            'luxury',
+            'luxury-noir',
+            'luxury-velvet',
+            'luxury-atelier',
+            'organic',
+            'organic-moss',
+            'organic-apothecary',
+            'organic-farmstead',
+            'eco',
+            'eco-clean-minimal',
+            'eco-kraft',
+        ])]
         public readonly string $theme_preset,
 
         #[Required, StringType, In(['none', 'supplements', 'pet_food', 'cosmetic', 'eco', 'tech', 'food'])]

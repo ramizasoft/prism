@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @php
         $preset = $page->prism_theme_preset ?? 'clinical';
-        $presetAsset = "resources/assets/css/presets/{$preset}.css";
+        // In a thin-client install, the preset source lives in the Prism package under vendor/.
+        // Keep a fallback for core-dev scenarios where presets may exist at repo-root resources/.
+        $presetAsset = "vendor/ramizasoft/prism/resources/assets/css/presets/{$preset}.css";
+        $presetAssetFallback = "resources/assets/css/presets/{$preset}.css";
         $presetHref = null;
 
         if (function_exists('vite')) {
             try {
                 $presetHref = vite($presetAsset, '/assets/build');
             } catch (\Throwable $e) {
-                // Vite manifest missing or build failed
+                try {
+                    $presetHref = vite($presetAssetFallback, '/assets/build');
+                } catch (\Throwable $e) {
+                    // Vite manifest missing or build failed
+                }
             }
         }
     @endphp

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "DM Sans";
+    --prism-font-body: "DM Sans";
+
+    --eco-ivory: #f5f8f4;
+    --eco-sage: #4a7c5e;
+    --eco-fern: #6b9472;
+    --eco-deep: #1e3a2a;
+    --eco-mist: #a3c4bc;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), system-ui, -apple-system, sans-serif;
+    color: #1b2620;
+    line-height: 1.65;
+    background:
+        radial-gradient(900px 600px at 10% 0%, rgba(75, 124, 94, 0.18), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(163, 196, 188, 0.22), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--eco-ivory) 100%);
+}
+
+/* Soft noise texture */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.16;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(27, 38, 32, 0.06) 0, rgba(27, 38, 32, 0.06) 1px, transparent 1px, transparent 6px),
+        repeating-linear-gradient(90deg, rgba(27, 38, 32, 0.04) 0, rgba(27, 38, 32, 0.04) 1px, transparent 1px, transparent 8px);
+    mix-blend-mode: multiply;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.02em;
+    color: var(--eco-deep);
+}
+
+a {
+    color: var(--eco-sage);
+    text-decoration: none;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--eco-deep);
+    text-decoration: underline;
+}
+

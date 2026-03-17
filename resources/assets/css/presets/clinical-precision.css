@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "Josefin Sans";
+    --prism-font-body: "Source Sans 3";
+
+    --prec-white: #ffffff;
+    --prec-navy: #0a1628;
+    --prec-cobalt: #1a56db;
+    --prec-platinum: #e8ecf1;
+    --prec-mist: rgba(10, 22, 40, 0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), ui-sans-serif, system-ui, sans-serif;
+    color: var(--prec-navy);
+    line-height: 1.65;
+    background:
+        linear-gradient(180deg, var(--prec-white) 0%, #fbfcff 40%, var(--prec-platinum) 100%);
+}
+
+.prism-layer {
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--prism-font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--prec-navy);
+}
+
+a {
+    color: var(--prec-cobalt);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 2px;
+}
+
+/* Precision header: Swiss grid / hairlines */
+.prec-header {
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid var(--prec-mist);
+    backdrop-filter: blur(10px);
+}
+
+.prec-brand {
+    font-family: var(--prism-font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--prec-navy);
+}
+
+.prec-nav a {
+    color: rgba(10, 22, 40, 0.74);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.prec-nav a:hover {
+    color: rgba(10, 22, 40, 0.96);
+}
+
+.prec-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(10, 22, 40, 0.12) 10%, rgba(26, 86, 219, 0.45) 50%, rgba(10, 22, 40, 0.12) 90%, transparent 100%);
+}
+
+/* Precision hero: label + strict geometry */
+.prec-hero {
+    border: 1px solid var(--prec-mist);
+    background:
+        linear-gradient(90deg, rgba(26, 86, 219, 0.06), transparent 40%),
+        radial-gradient(900px 420px at 15% 10%, rgba(26, 86, 219, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 236, 241, 0.75));
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.prec-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(90deg, rgba(10, 22, 40, 0.06) 0, rgba(10, 22, 40, 0.06) 1px, transparent 1px, transparent 44px);
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+.prec-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.prec-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(10, 22, 40, 0.78);
+}
+
+.prec-kicker::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(26, 86, 219, 0.55);
+}
+
+.prec-cta {
+    border-radius: 0;
+    padding: 0.78rem 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: var(--prec-navy);
+    color: var(--prec-white);
+    border: 1px solid rgba(10, 22, 40, 0.24);
+}
+
+.prec-cta:hover {
+    background: #081221;
+}
+
+.prec-secondaryLink {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
+
+.prec-sidePanel {
+    border: 1px solid var(--prec-mist);
+    background: rgba(255, 255, 255, 0.84);
+}
+
+/* Precision product card: dispensing label */
+.prec-card {
+    border-radius: 0;
+    border: 1px solid var(--prec-mist);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 16px 40px rgba(10, 22, 40, 0.08);
+}
+
+.prec-cardHeader {
+    border-bottom: 1px solid var(--prec-mist);
+    background: linear-gradient(180deg, rgba(232, 236, 241, 0.9), rgba(255, 255, 255, 0.8));
+}
+
+.prec-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 0;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid rgba(10, 22, 40, 0.14);
+    background: rgba(26, 86, 219, 0.08);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: rgba(10, 22, 40, 0.84);
+}
+
+.prec-chip::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--prec-cobalt);
+}
+
+/* Footer */
+.prec-footer {
+    border-top: 1px solid var(--prec-mist);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.prec-footTitle {
+    font-family: var(--prism-font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+

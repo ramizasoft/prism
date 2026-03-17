@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "Bitter";
+    --prism-font-body: "Source Serif 4";
+
+    --kraft-base: #e8d2a6;
+    --kraft-cream: #faf5e9;
+    --kraft-forest: #2d3e2a;
+    --kraft-rust: #8b4513;
+    --kraft-tan: #c9a97a;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), ui-serif, Georgia, serif;
+    color: var(--kraft-forest);
+    line-height: 1.75;
+    background:
+        radial-gradient(900px 600px at 10% 0%, rgba(201, 169, 122, 0.35), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(141, 69, 19, 0.18), transparent 60%),
+        linear-gradient(180deg, var(--kraft-cream) 0%, var(--kraft-base) 100%);
+}
+
+/* Kraft paper texture */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.3;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(77, 56, 32, 0.06) 0, rgba(77, 56, 32, 0.06) 1px, transparent 1px, transparent 7px),
+        repeating-linear-gradient(90deg, rgba(77, 56, 32, 0.05) 0, rgba(77, 56, 32, 0.05) 1px, transparent 1px, transparent 9px);
+    mix-blend-mode: multiply;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--prism-font-display), ui-serif, Georgia, serif;
+    letter-spacing: 0.03em;
+    color: var(--kraft-forest);
+}
+
+a {
+    color: var(--kraft-rust);
+    text-decoration: none;
+    text-underline-offset: 0.22em;
+}
+
+a:hover {
+    color: #5d3010;
+    text-decoration: underline;
+}
+
+/* Header */
+.kraft-header {
+    background:
+        linear-gradient(180deg, rgba(250, 245, 233, 0.96), rgba(232, 210, 166, 0.85));
+    border-bottom: 1px solid rgba(45, 62, 42, 0.18);
+}
+
+.kraft-logo {
+    font-family: var(--prism-font-display), ui-serif, Georgia, serif;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.kraft-nav a {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(45, 62, 42, 0.85);
+}
+
+.kraft-nav a:hover {
+    color: rgba(45, 62, 42, 1);
+}
+
+/* Hero: torn-paper band */
+.kraft-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(45, 62, 42, 0.14);
+    background:
+        linear-gradient(180deg, rgba(250, 245, 233, 0.96), rgba(232, 210, 166, 0.96));
+    box-shadow:
+        0 16px 40px rgba(45, 62, 42, 0.25);
+}
+
+.kraft-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(135deg, rgba(77, 56, 32, 0.12) 0, rgba(77, 56, 32, 0.12) 1px, transparent 1px, transparent 10px);
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+}
+
+.kraft-hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -16px;
+    height: 32px;
+    background:
+        radial-gradient(circle at 0 0, rgba(250, 245, 233, 1) 16px, transparent 16px),
+        radial-gradient(circle at 50% 0, rgba(250, 245, 233, 1) 16px, transparent 16px),
+        radial-gradient(circle at 100% 0, rgba(250, 245, 233, 1) 16px, transparent 16px);
+    background-size: 32px 32px;
+}
+
+.kraft-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA */
+.kraft-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.35rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff7ec;
+    background-image:
+        linear-gradient(120deg, #b45724, var(--kraft-rust));
+    box-shadow:
+        0 16px 34px rgba(139, 69, 19, 0.45);
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out, filter 150ms ease-out;
+}
+
+.kraft-cta:hover {
+    transform: translateY(-1px);
+    filter: saturate(1.06);
+    box-shadow:
+        0 20px 42px rgba(139, 69, 19, 0.6);
+}
+
+/* Product card */
+.kraft-card {
+    position: relative;
+    border-radius: 1.4rem;
+    border: 1px solid rgba(45, 62, 42, 0.16);
+    background:
+        linear-gradient(145deg, rgba(250, 245, 233, 0.98), rgba(232, 210, 166, 0.94));
+    box-shadow:
+        0 16px 38px rgba(45, 62, 42, 0.25);
+    overflow: hidden;
+}
+
+.kraft-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(700px 400px at 0% 0%, rgba(201, 169, 122, 0.26), transparent 65%);
+    opacity: 0.7;
+}
+
+.kraft-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.kraft-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: rgba(250, 245, 233, 0.96);
+    border: 1px solid rgba(45, 62, 42, 0.16);
+    color: rgba(45, 62, 42, 0.88);
+}
+

@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "Gilda Display";
+    --prism-font-body: "Jost";
+
+    --atelier-cream: #f3f0ea;
+    --atelier-bone: #faf9f7;
+    --atelier-charcoal: #1c1c1e;
+    --atelier-gold: #b89840;
+    --atelier-sand: #c4956a;
+    --atelier-warm-grey: #8a8478;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), system-ui, -apple-system, sans-serif;
+    color: var(--atelier-charcoal);
+    line-height: 1.7;
+    background:
+        radial-gradient(900px 600px at 0% 0%, rgba(200, 149, 106, 0.12), transparent 65%),
+        radial-gradient(900px 600px at 100% 10%, rgba(185, 152, 64, 0.1), transparent 65%),
+        linear-gradient(180deg, var(--atelier-bone) 0%, var(--atelier-cream) 100%);
+}
+
+/* Paper grain */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.18;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(138, 132, 120, 0.08) 0, rgba(138, 132, 120, 0.08) 1px, transparent 1px, transparent 6px),
+        repeating-linear-gradient(90deg, rgba(138, 132, 120, 0.06) 0, rgba(138, 132, 120, 0.06) 1px, transparent 1px, transparent 8px);
+    mix-blend-mode: multiply;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--prism-font-display), ui-serif, Georgia, serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--atelier-charcoal);
+}
+
+a {
+    color: var(--atelier-sand);
+    text-decoration: none;
+    text-underline-offset: 0.18em;
+}
+
+a:hover {
+    color: var(--atelier-gold);
+    text-decoration: underline;
+}
+
+/* Header: ultra-thin bottom border */
+.atelier-header {
+    background: linear-gradient(180deg, rgba(250, 249, 247, 0.95), rgba(243, 240, 234, 0.8));
+    border-bottom: 1px solid rgba(27, 27, 29, 0.06);
+}
+
+.atelier-logo {
+    font-family: var(--prism-font-display), ui-serif, Georgia, serif;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.atelier-nav a {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(28, 28, 30, 0.7);
+}
+
+.atelier-nav a:hover {
+    color: rgba(28, 28, 30, 1);
+}
+
+/* Hero: editorial split layout */
+.atelier-hero {
+    position: relative;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(27, 27, 29, 0.12);
+    background:
+        linear-gradient(135deg, rgba(250, 249, 247, 0.96), rgba(243, 240, 234, 0.96));
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.atelier-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 20% 0 55%;
+    background:
+        radial-gradient(700px 400px at 0% 0%, rgba(185, 152, 64, 0.28), transparent 65%);
+    opacity: 0.9;
+}
+
+.atelier-hero::after {
+    content: "";
+    position: absolute;
+    inset: 7% 6%;
+    border-radius: 1.3rem;
+    border: 1px solid rgba(27, 27, 29, 0.08);
+}
+
+.atelier-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA: thin-stroke pill */
+.atelier-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.3rem;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--atelier-charcoal);
+    background: rgba(250, 249, 247, 0.95);
+    border: 1px solid rgba(185, 152, 64, 0.75);
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.08);
+    transition: transform 150ms ease-out, box-shadow 150ms ease-out, background-color 150ms ease-out;
+}
+
+.atelier-cta:hover {
+    transform: translateY(-1px);
+    background: rgba(250, 249, 247, 1);
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Product card: stamped label */
+.atelier-card {
+    position: relative;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(27, 27, 29, 0.12);
+    background:
+        linear-gradient(145deg, rgba(250, 249, 247, 0.98), rgba(243, 240, 234, 0.98));
+    box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.atelier-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(700px 400px at 0% 0%, rgba(200, 149, 106, 0.16), transparent 65%);
+    opacity: 0.6;
+}
+
+.atelier-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.atelier-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: rgba(243, 240, 234, 0.95);
+    border: 1px solid rgba(27, 27, 29, 0.12);
+    color: rgba(27, 27, 29, 0.8);
+}
+

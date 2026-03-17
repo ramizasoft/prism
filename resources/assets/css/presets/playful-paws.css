@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "Fredoka";
+    --prism-font-body: "Nunito";
+
+    --paws-coral: #FF6B6B;
+    --paws-amber: #FFB347;
+    --paws-cream: #FFF8F0;
+    --paws-teal: #3DAA8B;
+    --paws-brown: #7A4F3A;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), system-ui, -apple-system, sans-serif;
+    color: var(--paws-brown);
+    line-height: 1.7;
+    background:
+        radial-gradient(900px 520px at 10% 10%, rgba(255, 107, 107, 0.22), transparent 60%),
+        radial-gradient(900px 520px at 90% 0%, rgba(255, 179, 71, 0.24), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--paws-cream) 100%);
+}
+
+/* Soft sprinkle grain */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.08;
+    background-image:
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.7) 0, transparent 40%),
+        radial-gradient(circle at 100% 0, rgba(255, 255, 255, 0.7) 0, transparent 40%),
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0.25) 1px, transparent 1px, transparent 4px);
+    mix-blend-mode: multiply;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.02em;
+    color: var(--paws-brown);
+}
+
+a {
+    color: var(--paws-teal);
+    text-decoration: none;
+    text-underline-offset: 0.18em;
+}
+
+a:hover {
+    color: var(--paws-coral);
+    text-decoration: underline;
+}
+
+/* Header: pill bar with paw pulse */
+.paws-header {
+    background:
+        linear-gradient(180deg, rgba(255, 248, 240, 0.95), rgba(255, 248, 240, 0.80));
+    border-bottom: 1px solid rgba(122, 79, 58, 0.12);
+    backdrop-filter: blur(16px);
+}
+
+.paws-logo {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--paws-brown);
+}
+
+.paws-nav a {
+    color: rgba(122, 79, 58, 0.82);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.paws-nav a:hover {
+    color: var(--paws-coral);
+}
+
+.paws-pawprint {
+    height: 3px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 5% 50%, var(--paws-coral) 0, transparent 35%),
+        radial-gradient(circle at 20% 50%, var(--paws-amber) 0, transparent 35%),
+        radial-gradient(circle at 35% 50%, var(--paws-teal) 0, transparent 35%),
+        radial-gradient(circle at 50% 50%, var(--paws-coral) 0, transparent 35%),
+        radial-gradient(circle at 65% 50%, var(--paws-amber) 0, transparent 35%),
+        radial-gradient(circle at 80% 50%, var(--paws-teal) 0, transparent 35%);
+    background-size: 24px 3px;
+    background-repeat: repeat-x;
+}
+
+/* Hero: rounded cloud with warm glow */
+.paws-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(122, 79, 58, 0.18);
+    background:
+        radial-gradient(900px 520px at 12% 10%, rgba(255, 179, 71, 0.38), transparent 60%),
+        radial-gradient(900px 520px at 85% 15%, rgba(61, 170, 139, 0.30), transparent 60%),
+        linear-gradient(145deg, rgba(255, 248, 240, 0.96), rgba(255, 248, 240, 0.86));
+    box-shadow:
+        0 22px 60px rgba(122, 79, 58, 0.20),
+        0 0 0 1px rgba(255, 248, 240, 0.80);
+}
+
+.paws-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(600px 260px at 20% 100%, rgba(255, 107, 107, 0.30), transparent 65%),
+        radial-gradient(520px 220px at 90% 0%, rgba(255, 179, 71, 0.30), transparent 60%);
+    opacity: 0.65;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+.paws-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.paws-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 179, 71, 0.5);
+    background: rgba(255, 248, 240, 0.95);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(122, 79, 58, 0.95);
+}
+
+.paws-kicker::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--paws-coral);
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.70);
+}
+
+.paws-cta {
+    border-radius: 999px;
+    padding: 0.85rem 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #3b1b0f;
+    background:
+        linear-gradient(180deg, var(--paws-coral), #ff8a7f);
+    box-shadow: 0 16px 40px rgba(255, 107, 107, 0.32);
+    border: 1px solid rgba(255, 124, 105, 0.8);
+}
+
+.paws-cta:hover {
+    transform: translateY(-1px);
+    filter: saturate(1.05);
+}
+
+.paws-secondaryLink {
+    color: rgba(122, 79, 58, 0.85);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.paws-secondaryLink:hover {
+    color: var(--paws-teal);
+}
+
+.paws-sidePanel {
+    border-radius: 1.5rem;
+    border: 1px dashed rgba(122, 79, 58, 0.24);
+    background:
+        radial-gradient(500px 240px at 20% 0%, rgba(255, 248, 240, 0.9), transparent 65%),
+        linear-gradient(180deg, rgba(255, 248, 240, 0.96), rgba(255, 248, 240, 0.92));
+    box-shadow: 0 16px 40px rgba(122, 79, 58, 0.18);
+}
+
+/* Product cards: chunky snacks grid */
+.paws-card {
+    position: relative;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(122, 79, 58, 0.14);
+    background: #ffffff;
+    box-shadow:
+        0 14px 34px rgba(122, 79, 58, 0.16),
+        0 0 0 1px rgba(255, 248, 240, 0.9);
+    overflow: hidden;
+}
+
+.paws-cardHeader {
+    position: relative;
+    border-bottom: 1px dashed rgba(122, 79, 58, 0.18);
+    background:
+        radial-gradient(520px 220px at 0% 0%, rgba(255, 179, 71, 0.28), transparent 65%),
+        radial-gradient(520px 220px at 100% 0%, rgba(61, 170, 139, 0.22), transparent 65%),
+        linear-gradient(180deg, #fffaf4, #fff5eb);
+}
+
+.paws-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(61, 170, 139, 0.55);
+    background: rgba(255, 255, 255, 0.96);
+    color: rgba(61, 170, 139, 0.96);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.paws-footer {
+    border-top: 1px solid rgba(122, 79, 58, 0.16);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 240, 0.96), rgba(255, 248, 240, 0.86));
+}
+
+.paws-footTitle {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+

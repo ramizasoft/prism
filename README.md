@@ -58,7 +58,7 @@ The easiest way to start is using the `init` command.
     ```bash
     prism init
     ```
-    Follow the interactive prompts to set your Project Name, Niche (Clinical, Playful, etc.), and Brand Color.
+    Follow the interactive prompts to set your Project Name, Theme Preset, Compliance Mode, and Brand Color.
 
     **This command automatically:**
     - Generates `config.php` with your settings.
@@ -69,8 +69,9 @@ The easiest way to start is using the `init` command.
 3.  **Install & Build:**
     ```bash
     composer install
-    prism build
-    prism build production
+    npm install
+    npm run dev
+    npm run build
     ```
 
 ---
@@ -88,16 +89,19 @@ Add the build listeners to the client's `bootstrap.php` to enable validation and
 <?php
 
 use Prism\Core\Listeners\BuildValidator;
+use Prism\Core\Listeners\ThemeInjector;
 use Prism\Core\Listeners\TemplateLoader;
 
 /** @var \TightenCo\Jigsaw\Events\EventBus $events */
 $events->beforeBuild([
     BuildValidator::class,
+    ThemeInjector::class,
     TemplateLoader::class,
 ]);
 ```
 
 - **`BuildValidator`**: Loads `config.php`, strictly validates it against Spatie Data DTOs, and halts the build on error.
+- **`ThemeInjector`**: Injects brand colors/preset values into the Jigsaw config for CSS variables and theming.
 - **`TemplateLoader`**: Registers the correct Blade templates based on the active niche preset.
 
 ---

@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito+Sans:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../components/supplement-facts.css";
+
+:root {
+    --prism-font-display: "DM Sans";
+    --prism-font-body: "Nunito Sans";
+
+    --clean-ivory: #f5f8f4;
+    --clean-sage: #4a7c5e;
+    --clean-fern: #6b9472;
+    --clean-deep: #1e3a2a;
+    --clean-mist: #a3c4bc;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), system-ui, -apple-system, sans-serif;
+    color: #16241b;
+    line-height: 1.7;
+    background:
+        radial-gradient(900px 600px at 10% 0%, rgba(75, 124, 94, 0.16), transparent 60%),
+        radial-gradient(900px 600px at 90% 15%, rgba(163, 196, 188, 0.24), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--clean-ivory) 100%);
+}
+
+/* Clean micro-noise */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.14;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(22, 36, 27, 0.06) 0, rgba(22, 36, 27, 0.06) 1px, transparent 1px, transparent 7px),
+        repeating-linear-gradient(90deg, rgba(22, 36, 27, 0.04) 0, rgba(22, 36, 27, 0.04) 1px, transparent 1px, transparent 9px);
+    mix-blend-mode: multiply;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.02em;
+    color: var(--clean-deep);
+}
+
+a {
+    color: var(--clean-sage);
+    text-decoration: none;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--clean-deep);
+    text-decoration: underline;
+}
+
+/* Header */
+.clean-header {
+    background:
+        linear-gradient(180deg, rgba(245, 248, 244, 0.96), rgba(245, 248, 244, 0.82));
+    border-bottom: 1px solid rgba(22, 36, 27, 0.08);
+    backdrop-filter: blur(14px);
+}
+
+.clean-logo {
+    font-family: var(--prism-font-display), system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.clean-nav a {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(22, 36, 27, 0.8);
+}
+
+.clean-nav a:hover {
+    color: rgba(22, 36, 27, 1);
+}
+
+/* Hero: diagonal clean panel */
+.clean-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(22, 36, 27, 0.08);
+    background:
+        radial-gradient(900px 600px at 0% 0%, rgba(75, 124, 94, 0.18), transparent 65%),
+        radial-gradient(900px 600px at 100% 0%, rgba(163, 196, 188, 0.28), transparent 65%),
+        linear-gradient(135deg, #ffffff, #f5f8f4);
+    box-shadow:
+        0 18px 46px rgba(16, 24, 20, 0.18);
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+}
+
+.clean-hero::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background:
+        linear-gradient(135deg, rgba(163, 196, 188, 0.35), transparent 60%);
+    opacity: 0.6;
+}
+
+.clean-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.7) 40%, transparent 80%);
+    opacity: 0.6;
+}
+
+.clean-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA */
+.clean-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.35rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-image:
+        linear-gradient(120deg, var(--clean-deep), #284c34);
+    box-shadow:
+        0 14px 30px rgba(24, 53, 36, 0.4);
+    transition: transform 140ms ease-out, box-shadow 140ms ease-out, filter 140ms ease-out;
+}
+
+.clean-cta:hover {
+    transform: translateY(-1px);
+    filter: saturate(1.05);
+    box-shadow:
+        0 18px 40px rgba(24, 53, 36, 0.5);
+}
+
+/* Product card */
+.clean-card {
+    position: relative;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(22, 36, 27, 0.08);
+    background:
+        linear-gradient(145deg, #ffffff, rgba(245, 248, 244, 0.95));
+    box-shadow:
+        0 12px 26px rgba(16, 24, 20, 0.12);
+    overflow: hidden;
+}
+
+.clean-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.clean-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(245, 248, 244, 0.96);
+    border: 1px solid rgba(22, 36, 27, 0.08);
+    color: rgba(22, 36, 27, 0.85);
+}
+

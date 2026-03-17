@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@300;400;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,32 +6,69 @@
 
 @import "../components/supplement-facts.css";
 
-body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: #ffffff;
-    color: var(--prism-color-primary);
-    line-height: 1.6;
+:root {
+    --prism-font-display: "Playfair Display";
+    --prism-font-body: "Source Sans 3";
+
+    --lux-ivory: #f7f3ea;
+    --lux-ink: #1c1b22;
+    --lux-gold: #c7a36a;
+    --lux-sand: #c49b76;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--prism-color-primary);
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--prism-font-body), system-ui, -apple-system, sans-serif;
+    color: var(--lux-ink);
+    line-height: 1.7;
+    background:
+        radial-gradient(900px 550px at 10% 0%, rgba(199, 163, 106, 0.24), transparent 60%),
+        radial-gradient(900px 550px at 90% 10%, rgba(196, 155, 118, 0.18), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--lux-ivory) 100%);
+}
+
+/* Subtle paper texture */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.12;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(28, 27, 34, 0.05) 0, rgba(28, 27, 34, 0.05) 1px, transparent 1px, transparent 6px),
+        repeating-linear-gradient(90deg, rgba(28, 27, 34, 0.04) 0, rgba(28, 27, 34, 0.04) 1px, transparent 1px, transparent 8px);
+    mix-blend-mode: multiply;
+}
+
+.prism-layer {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--prism-font-display), ui-serif, Georgia, serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--lux-ink);
 }
 
 a {
-    color: var(--prism-color-secondary);
+    color: var(--lux-sand);
     text-decoration: none;
+    text-underline-offset: 0.2em;
 }
 
 a:hover {
+    color: var(--lux-gold);
     text-decoration: underline;
-}
-
-button,
-.btn {
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: all 0.2s;
 }
 

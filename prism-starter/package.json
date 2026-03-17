@@ -3,13 +3,16 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "php vendor/bin/prism build",
-        "build": "php vendor/bin/prism build production",
+        "assets:build": "vite build",
+        "assets:watch": "vite build --watch",
+        "dev": "npm run assets:build && php vendor/bin/prism build",
+        "build": "npm run assets:build && php vendor/bin/prism build production",
         "preview": "php vendor/bin/prism serve"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4",
-        "postcss": "^8.4",
-        "tailwindcss": "^3.4"
+        "autoprefixer": "*",
+        "postcss": "*",
+        "tailwindcss": "*",
+        "vite": "*"
     }
 }

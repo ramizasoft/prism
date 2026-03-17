@@ -1,0 +1,28 @@
+---
+extends: prism::layouts.app
+title: "Example Product"
+description: "Example description tailored to your niche."
+sku: "EXAMPLE-SKU"
+price: 29.99
+amazon_link: "https://amazon.com/dp/REPLACE_ME"
+supplement_facts:
+  serving_size: "1 Capsule"
+  servings_per_container: "60"
+  nutrients:
+    - name: "Vitamin C"
+      amount: "1000mg"
+      dv_percent: 1111
+      source: "as Ascorbic Acid"
+  proprietary_blends:
+    - name: "Liposomal Matrix"
+      amount: "50mg"
+      ingredients:
+        - "Phosphatidylcholine"
+        - "Palmitic Acid"
+        - "Oleic Acid"
+---
+
+# Example Product
+
+Write the product story here. Keep it benefit-led, brand-aligned, and compliant for your `compliance_mode`.
+

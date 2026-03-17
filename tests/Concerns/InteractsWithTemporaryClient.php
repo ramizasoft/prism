@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Artisan;
 
 trait InteractsWithTemporaryClient
 {
-    protected string $tempRoot;
-    protected string $sourceDir;
-    protected string $buildDir;
-    protected string $configPath;
-    protected string $bootstrapPath;
-    protected Filesystem $filesystem;
+    public string $tempRoot;
+    public string $sourceDir;
+    public string $buildDir;
+    public string $configPath;
+    public string $bootstrapPath;
+    public Filesystem $filesystem;
 
-    protected function setupTemporaryClient(string $dirName): void
+    public function setupTemporaryClient(string $dirName): void
     {
         $this->filesystem = new Filesystem();
         $this->tempRoot = base_path("tests/tmp/$dirName");
@@ -29,37 +29,37 @@ trait InteractsWithTemporaryClient
         $this->filesystem->makeDirectory($this->sourceDir, 0755, true);
     }
 
-    protected function createConfigFile(array $config): void
+    public function createConfigFile(array $config): void
     {
         $content = "<?php\n\nreturn " . var_export($config, true) . ";\n";
         file_put_contents($this->configPath, $content);
     }
 
-    protected function createConfigFileRaw(string $content): void
+    public function createConfigFileRaw(string $content): void
     {
         file_put_contents($this->configPath, $content);
     }
 
-    protected function createBootstrapFile(string $content): void
+    public function createBootstrapFile(string $content): void
     {
         file_put_contents($this->bootstrapPath, $content);
     }
 
-    protected function createSourceFile(string $path, string $content): void
+    public function createSourceFile(string $path, string $content): void
     {
         $fullPath = $this->sourceDir . '/' . ltrim($path, '/');
         $this->filesystem->ensureDirectoryExists(dirname($fullPath));
         file_put_contents($fullPath, $content);
     }
 
-    protected function createManifestFile(string $path, array $content): void
+    public function createManifestFile(string $path, array $content): void
     {
          $fullPath = $this->tempRoot . '/source/assets/build/' . ltrim($path, '/');
          $this->filesystem->ensureDirectoryExists(dirname($fullPath));
          file_put_contents($fullPath, json_encode($content, JSON_PRETTY_PRINT));
     }
 
-    protected function runBuildCommand(string $env = 'local'): int
+    public function runBuildCommand(string $env = 'local'): int
     {
         $originalCwd = getcwd();
         chdir($this->tempRoot);
@@ -71,32 +71,32 @@ trait InteractsWithTemporaryClient
         }
     }
 
-    protected function getBuildOutput(): string
+    public function getBuildOutput(): string
     {
         return Artisan::output();
     }
 
-    protected function cleanupTemporaryClient(): void
+    public function cleanupTemporaryClient(): void
     {
         if (isset($this->filesystem) && $this->filesystem->isDirectory($this->tempRoot)) {
             $this->filesystem->deleteDirectory($this->tempRoot);
         }
     }
 
-    protected function assertBuildFileExists(string $path): void
+    public function assertBuildFileExists(string $path): void
     {
         $resolved = $this->resolveBuildPath($path);
         expect(is_file($resolved))->toBeTrue();
     }
 
-    protected function getBuildFileContent(string $path): string
+    public function getBuildFileContent(string $path): string
     {
         $resolved = $this->resolveBuildPath($path);
 
         return file_get_contents($resolved);
     }
 
-    protected function assertBuildFileContains(string $path, string $needle): void
+    public function assertBuildFileContains(string $path, string $needle): void
     {
         $content = $this->getBuildFileContent($path);
         expect($content)->toContain($needle);

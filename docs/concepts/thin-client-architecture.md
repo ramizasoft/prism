@@ -81,19 +81,20 @@ Instead of editing HTML or Blade files to change the design, the client defines 
 
 ```php
 // client-repo/config.php
+use Prism\Core\Prism;
 
-return [
-    'brand' => [
-        'name' => 'ZenPet Organics',
-        'niche' => 'pet-health', // Triggers "Playful" preset & AAFCO rules
-        'colors' => [
-            'primary' => '#4ADE80',
-        ],
+return Prism::configure(
+    project_name: 'ZenPet Organics',
+    theme_preset: 'playful-paws',
+    compliance_mode: 'pet_food',
+    brand_colors: [
+        'primary' => '#4ADE80',
+        'secondary' => '#0f172a',
     ],
-    'compliance' => [
-        'mode' => 'pet-food', // Injects Guaranteed Analysis panels
+    niche: [
+        'aafco_statement' => 'This product is formulated to meet the nutritional levels established by the AAFCO Dog Food Nutrient Profiles for all life stages.',
     ],
-];
+);
 ```
 
 ## Benefits

@@ -10,5 +10,5 @@ return Prism::configure(
         'primary' => '{{ primary_color }}',
         'secondary' => '#1f2937',
     ],
-    niche: [],
+    niche: {{ niche }},
 );

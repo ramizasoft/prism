@@ -69,7 +69,7 @@ final class UpdateAllCommand extends Command
     private function runUpdates(string $sitePath, bool $push): array
     {
         $commands = [
-            ['composer', 'update', 'prism/core-engine'],
+            ['composer', 'update', 'ramizasoft/prism'],
             ['git', 'add', 'composer.lock'],
             ['git', 'commit', '-m', 'chore: update prism engine'],
         ];

@@ -72,6 +72,24 @@ it('fails validation for invalid enum values', function (): void {
     ]))->toThrow(ValidationException::class);
 });
 
+it('accepts new organic theme presets', function (string $themePreset): void {
+    $data = ConfigData::from([
+        'project_name' => 'Prism',
+        'theme_preset' => $themePreset,
+        'compliance_mode' => 'none',
+        'brand_colors' => [
+            'primary' => '#111111',
+            'secondary' => '#eeeeee',
+        ],
+    ]);
+
+    expect($data->theme_preset)->toBe($themePreset);
+})->with([
+    'organic-moss',
+    'organic-apothecary',
+    'organic-farmstead',
+]);
+
 it('requires niche data when compliance_mode is supplements', function (): void {
     expect(fn () => ConfigData::from([
         'project_name' => 'Prism',
@@ -99,9 +117,12 @@ it('creates supplements niche config with required fields', function (): void {
         ],
     ]);
 
-    expect($data->niche)->toBeInstanceOf(SupplementsConfig::class)
-        ->and($data->niche->fda_disclaimer)->toBe('These statements...')
-        ->and($data->niche->supplement_facts_format)->toBe('standard');
+    expect($data->niche)->toBeInstanceOf(SupplementsConfig::class);
+    /** @var SupplementsConfig $niche */
+    $niche = $data->niche;
+
+    expect($niche->fda_disclaimer)->toBe('These statements...')
+        ->and($niche->supplement_facts_format)->toBe('standard');
 });
 
 it('fails when supplements niche is missing required fields', function (): void {
@@ -133,7 +154,10 @@ it('creates pet food niche config when provided', function (): void {
         ],
     ]);
 
-    expect($data->niche)->toBeInstanceOf(PetFoodConfig::class)
-        ->and($data->niche->aafco_statement)->toBe('Meets AAFCO standards');
+    expect($data->niche)->toBeInstanceOf(PetFoodConfig::class);
+    /** @var PetFoodConfig $niche */
+    $niche = $data->niche;
+
+    expect($niche->aafco_statement)->toBe('Meets AAFCO standards');
 });
 

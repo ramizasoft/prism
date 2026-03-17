@@ -96,10 +96,15 @@ class BuildCommand extends Command
 
     protected function runJigsaw(string $scriptToUse, string $environment, string $workingDirectory): int
     {
+        $autoload = $workingDirectory . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+        $prepend = is_file($autoload)
+            ? $autoload
+            : base_path('vendor/autoload.php');
+
         $command = [
             PHP_BINARY,
             '-d',
-            'auto_prepend_file=' . base_path('vendor/autoload.php'),
+            'auto_prepend_file=' . $prepend,
             $scriptToUse,
             'build',
             $environment,
@@ -128,6 +133,8 @@ class BuildCommand extends Command
  */
 
 /** @var \TightenCo\Jigsaw\Events\EventBus $events */
+$events->beforeBuild(\Prism\Core\Listeners\BuildValidator::class);
+$events->beforeBuild(\Prism\Core\Listeners\ThemeInjector::class);
 $events->beforeBuild(\Prism\Core\Listeners\TemplateLoader::class);
 
 PHP;

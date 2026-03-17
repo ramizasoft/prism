@@ -8,6 +8,9 @@ use Illuminate\Validation\Factory as ValidationFactory;
 use Illuminate\Support\Facades\Validator as ValidatorFacade;
 use LaravelZero\Framework\Testing\TestCase as BaseTestCase;
 
+/**
+ * @mixin \Tests\Concerns\InteractsWithTemporaryClient
+ */
 abstract class TestCase extends BaseTestCase
 {
     protected function setUp(): void

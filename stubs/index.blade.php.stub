@@ -1,0 +1,23 @@
+---
+extends: prism::layouts.app
+title: {{ title }}
+---
+
+<x-prism::ui.hero
+    title="{{ title }}"
+    subtitle="{{ subtitle }}"
+    cta-label="Shop on Amazon"
+    cta-href="#products"
+/>
+
+<section id="products" class="mx-auto mt-10 grid max-w-5xl gap-6 px-4 sm:grid-cols-2">
+    <x-prism::ui.product-card
+        title="Example Product"
+        price="$29.99"
+        cta-label="View Details"
+        cta-href="/products/example-product"
+    >
+        Replace this with your product’s top benefit and proof point.
+    </x-prism::ui.product-card>
+</section>
+
